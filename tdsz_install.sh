@@ -36,11 +36,14 @@ install_deps(){
 install_panel(){
 	clear
 	echo "We need to in Install the Panel System : "
-	read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
+	read -p "Press [Enter] key to continue..." fackEnterKey
 	clear
-	echo "We need to Install Some System Support Files : "
-	apt-get install git -y
-	read -p "System Support Files Installed : Press [Enter] key to continue..." fackEnterKey
+	echo "Removing Old Version"
+	rm -rf /opt/tds_zombie
+	pause
+	echo "We need to Install Source from GIT Hub : "
+	cd /opt&&git clone https://github.com/DigitalizedWarfare/tds_zombie.git
+	read -p "GIT Cloned : Press [Enter] key to continue..." fackEnterKey
 	clear
 }
 
