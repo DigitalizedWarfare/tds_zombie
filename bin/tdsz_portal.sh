@@ -93,7 +93,7 @@ install_kippo(){
 	echo "Restarting APache 2"
 	/etc/init.d/./apache2 restart
 	echo "Starting Kippo..."
-	authbind --deep /opt/kippo/./start.sh
+	su kippo authbind --deep /opt/kippo/./start.sh
 	read -p 'Kippo Should Have Started : Press [Enter] key to continue...' fackEnterKey
 	clear
 	echo "Installing Required Files for Kippo Graph"
@@ -101,6 +101,8 @@ install_kippo(){
 	/etc/init.d/apache2 restart
 	cd /opt
 	git clone https://github.com/ikoniaris/kippo-graph.git
+	echo "Linking WWW"
+	ln -s /opt/kippo-graph /opt/tds_zombie/www/kippo-graph
 	
 }
 install_dionaea(){
