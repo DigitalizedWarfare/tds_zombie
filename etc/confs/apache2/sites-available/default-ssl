@@ -1,13 +1,13 @@
 <IfModule mod_ssl.c>
-<VirtualHost _default_:443>
+<VirtualHost _default_:15443>
 	ServerAdmin webmaster@localhost
 
-	DocumentRoot /var/www
+	DocumentRoot /opt/tdsz_portal/www
 	<Directory />
 		Options FollowSymLinks
 		AllowOverride None
 	</Directory>
-	<Directory /var/www/>
+	<Directory /opt/tdsz_portal/www/>
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride None
 		Order allow,deny

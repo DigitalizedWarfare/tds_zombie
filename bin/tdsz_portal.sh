@@ -74,6 +74,19 @@ install_kippo(){
 	ifconfig > sbin/ifconfig
 	setcap 'cap_net_bind_service=+ep' /usr/bin/python2.7
 	apt-get install phpmyadmin -y
+	mkdir -p /opt/tdsz_backup/etc/confs/apache2/sites-available/
+	mkdir -p /opt/tdsz_backup/etc/confs/apache2/sites-available/sites-enabled
+	
+	cp /etc/apache2/ports.conf /opt/tdsz_backup/etc/confs/apache2/ports.conf
+	cp /etc/apache2/sites-available/* /opt/tdsz_backup/etc/confs/apache2/sites-available/
+	
+	mv /etc/apache2/ports.conf /etc/apache2/ports.conf.bak
+	mv /etc/apache2/sites-available/default /etc/apache2/sites-available/default.bak
+	mv /etc/apache2/sites-available/default-ssl /etc/apache2/sites-available/default-ssl.bak
+	
+	cp /opt/tds_zombie/etc/confs/apache2/ports.conf /etc/apache2/ports.conf
+	cp /opt/tds_zombie/etc/confs/apache2/sites-available/* /etc/apache2/sites-available/
+	/etc/init.d/./apache2 restart
 	clear
 }
 install_dionaea(){
