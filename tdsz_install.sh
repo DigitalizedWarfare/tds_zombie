@@ -34,28 +34,34 @@ install_deps(){
 	echo "We need to Install Some System Support Files : "
 	apt-get install git -y
 	read -p "System Support Files Installed : Press [Enter] key to continue..." fackEnterKey
+	updatedb
 	clear
 }
 install_panel(){
 	clear
 	echo "We need to in Install the Panel System : "
 	read -p "Press [Enter] key to continue..." fackEnterKey
-	ln -s /opt/bin/tdz_portal.sh /usr/local/bin/tdz_portal
-	chmod +x /usr/local/bin/tdz_portal
+	ln -s /opt/bin/tdz_portal.sh /usr/bin/tdz_portal
+	chmod +x /usr/bin/tdz_portal
 	chmod +x /opt/bin/tdz_portal.sh
+	updatedb
 	clear
 }
 
 change_ssh_port(){
 		clear
+		updatedb
 		echo "We need to change the Default SSH Port.. Yes.. You will have to log"
 		echo "again to the correct port....15022 "
-		read -p "Press [Enter] key to continue port change and restart ssh services.." fackEnterKey
+		read -p "Press [Enter] key to continue.." fackEnterKey
 		clear
 		mkdir -p /opt/tdsz_backup/etc/confs/ssh/
 		cp /etc/ssh/sshd_config /opt/tdsz_backup/etc/confs/ssh/
 		mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
-		cp -v /opt/tds_zombie/etc/confs/ssh/sshd_config /etc/ssh/sshd_config
+		cp /opt/tds_zombie/etc/confs/ssh/sshd_config /etc/ssh/sshd_config
+		echo "We need to change the Default SSH Port.. Yes.. You will have to log"
+		echo "again to the correct port....15022 "
+		read -p "Press [Enter] key to restart SSH services.." fackEnterKey
 		/etc/init.d/./ssh restart
 		exit
 }
