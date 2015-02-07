@@ -61,7 +61,7 @@ change_ssh_port(){
 		clear
 		mkdir -p /opt/tdsz_backup/etc/confs/ssh/
 		mv /etc/ssh/sshd_config /opt/tdsz_backup/etc/confs/ssh/
-		cp -v /opt/tds_zombie/etc/confs/ssh/sshd_conf /etc/ssh/sshd_config
+		cp -v /opt/tds_zombie/etc/confs/ssh/sshd_config /etc/ssh/sshd_config
 		/etc/init.d/./ssh restart
 		exit
 }
