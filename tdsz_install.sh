@@ -14,14 +14,17 @@ PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
 
-# ----------------------------------
-# Custom defined function
-# ----------------------------------
+# ----------------------------------------------
+# Pauses and Alerts
+# ----------------------------------------------
 pause(){
   read -p " Press [Enter] key to continue..." fackEnterKey
   clear
 }
 
+# ----------------------------------------------
+# Install Dependancys
+# ----------------------------------------------
 install_deps(){
 	clear
 	echo "We need to Update your System : "
@@ -50,7 +53,9 @@ install_panel(){
 	clear
 }
 
-# Core Functions 
+# ----------------------------------------------
+# These are the Menu Loaders
+# ----------------------------------------------
 # System Install
 system_install(){
 	while true
@@ -68,7 +73,9 @@ system_config(){
 }
 
 
-# Menu Section Here
+# ----------------------------------------------
+# These are the Text Menus
+# ----------------------------------------------
 # Main Menu
 main_menu() {
 	clear
@@ -103,7 +110,9 @@ install_menu() {
 }
 
 
-# Menu Options Here
+# ----------------------------------------------
+# These are the Menu Options
+# ----------------------------------------------
 # Main Menu Options
 main_menu_options(){
 	local menu_choice

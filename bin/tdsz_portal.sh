@@ -14,14 +14,17 @@ PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
 
-# ----------------------------------
-# Custom defined function
-# ----------------------------------
+# ----------------------------------------------
+# Pauses and Alerts
+# ----------------------------------------------
 pause(){
   read -p " Press [Enter] key to continue..." fackEnterKey
   clear
 }
 
+# ----------------------------------------------
+# HoneyPot Software Installers
+# ----------------------------------------------
 install_kippo(){
 	clear
 	echo "We need to Update your System : "
@@ -99,7 +102,9 @@ install_amun(){
 	read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
 	clear
 }
-# Core Functions 
+# ----------------------------------------------
+# These are the Menu Loaders
+# ----------------------------------------------
 # System Install
 system_install(){
 	while true
@@ -117,7 +122,9 @@ system_config(){
 }
 
 
-# Menu Section Here
+# ----------------------------------------------
+# These are the Text Menus
+# ----------------------------------------------
 # Main Menu
 main_menu() {
 	clear
@@ -178,15 +185,17 @@ config_menu() {
 	echo " 0. To Exit to the Main Menu "
 }
 
-# Menu Options Here
+# ----------------------------------------------
+# These are the Menu Options
+# ----------------------------------------------
 # Main Menu Options
 main_menu_options(){
 	local menu_choice
 	echo " "
-	read -p " Main Menu Enter choice [ 1 - 3 or 0 ] " menu_choice
+	read -p " Main Menu Enter choice [ 1 - 2 or 0 ] " menu_choice
 	case $menu_choice in
 		1) system_install ;;
-		1) system_config ;;
+		2) system_config ;;
 		0) exit 0;;
 		*) echo -e " ${RED}Error...${STD}" && sleep 2
 	esac
@@ -196,7 +205,7 @@ main_menu_options(){
 install_menu_options(){
 	local install_choice
 	echo " "
-	read -p " Install Menu Enter choice [ 1 - 3 or 0 ] " install_choice
+	read -p " Install Menu Enter choice [ 1 - 8 or 0 ] " install_choice
 	case $install_choice in
 		1) install_kippo ;;
 		2) install_dionaea ;;
@@ -215,7 +224,7 @@ install_menu_options(){
 config_menu_options(){
 	local config_choice
 	echo " "
-	read -p " Install Menu Enter choice [ 1 - 3 or 0 ] " config_choice
+	read -p " Install Menu Enter choice [ 1 - 8 or 0 ] " config_choice
 	case $config_choice in
 		1) configure_kippo ;;
 		2) configure_dionaea ;;
