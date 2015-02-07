@@ -124,10 +124,13 @@ install_kippo(){
 	mv /opt/kippo2mysql/kippo2mysql.pl /opt/kippo2mysql/kippo2mysql.pl.bak
 	cp /opt/tds_zombie/etc/confs/kippo2mysql/kippo2mysql.pl /opt/kippo2mysql/kippo2mysql.pl
 	
+	#Install Kippo-Log2DB
 	cd /opt
 	mkdir kippo-log2db 
 	cd kippo-log2db
 	wget http://handlers.sans.org/jclausing/kippo-log2db.pl
+	mv /opt/kippo-log2db/kippo-log2db.pl /opt/kippo-log2db/kippo-log2db.pl.bak
+	cp /opt/tds_zombie/etc/confs/kippo-log2db/kippo-log2db.pl /opt/kippo-log2db/kippo-log2db.pl
 	
 }
 install_dionaea(){
