@@ -323,6 +323,7 @@ install_dionaea(){
 	mv /opt/dionaea/etc/dionaea/dionaea.conf /opt/dionaea/etc/dionaea/dionaea.conf.bak
 	cp /opt/tds_zombie/etc/confs/dionaea/dionaea.conf /opt/dionaea/etc/dionaea/dionaea.conf
 	cd /opt/dionaea/bin
+	p0f -i any -u root -Q /tmp/p0f.sock -q -l&
 	./dionaea -D
 
 	cp /opt/tds_zombie/etc/confs/dionaeafr/settings.py /opt/DionaeaFR/DionaeaFR/settings.py
