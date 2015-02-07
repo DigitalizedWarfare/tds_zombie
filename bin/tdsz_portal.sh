@@ -35,6 +35,8 @@ install_kippo(){
 	echo " "
 	echo "We need to Install System Files for Kippo ...."
 	apt-get install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip python-mysqldb mysql-server libcap2-bin -y
+	/etc/init.d/./mysql stop
+	rm -rf /etc/mysql/my.cnf.bak
 	mv /etc/mysql/my.cnf /etc/mysql/my.cnf.bak
 	cp /opt/tds_zombie/etc/confs/mysql/my.cnf /etc/mysql/my.cnf
 	/etc/init.d/./mysql restart
@@ -140,7 +142,7 @@ install_kippo(){
 	cp /opt/tds_zombie/etc/confs/kippo-log2db/kippo-log2db.pl /opt/kippo-log2db/kippo-log2db.pl
 	
 	echo " "
-	install_dionaea
+	#install_dionaea
 }
 install_dionaea(){
 	clear
