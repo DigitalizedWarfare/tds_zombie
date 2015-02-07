@@ -40,13 +40,6 @@ install_panel(){
 	clear
 	echo "We need to in Install the Panel System : "
 	read -p "Press [Enter] key to continue..." fackEnterKey
-	clear
-	echo "Removing Old Version"
-	rm -rf /opt/tds_zombie
-	pause
-	echo "We need to Install Source from GIT Hub : "
-	cd /opt&&git clone https://github.com/DigitalizedWarfare/tds_zombie.git
-	read -p "GIT Cloned : Press [Enter] key to continue..." fackEnterKey
 	ln -s /opt/bin/tdz_portal.sh /usr/local/bin/tdz_portal
 	chmod +x /usr/local/bin/tdz_portal
 	chmod +x /opt/bin/tdz_portal.sh
@@ -56,11 +49,12 @@ install_panel(){
 change_ssh_port(){
 		clear
 		echo "We need to change the Default SSH Port.. Yes.. You will have to log"
-		echo "again to the correct port.... "
+		echo "again to the correct port....15022 "
 		read -p "Press [Enter] key to continue port change and restart ssh services.." fackEnterKey
 		clear
 		mkdir -p /opt/tdsz_backup/etc/confs/ssh/
-		mv /etc/ssh/sshd_config /opt/tdsz_backup/etc/confs/ssh/
+		cp /etc/ssh/sshd_config /opt/tdsz_backup/etc/confs/ssh/
+		mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 		cp -v /opt/tds_zombie/etc/confs/ssh/sshd_config /etc/ssh/sshd_config
 		/etc/init.d/./ssh restart
 		exit
