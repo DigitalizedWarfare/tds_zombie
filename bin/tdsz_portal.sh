@@ -38,7 +38,7 @@ install_kippo(){
 	adduser --disabled-login kippo
 	read -p "Kippo User Added : Press [Enter] key to continue..." fackEnterKey
 	echo " "
-	echo "Cloning Kippo Git Dource : Please Wait:"
+	echo "Cloning Kippo Git Source : Please Wait:"
 	cd /opt
 	git clone https://github.com/desaster/kippo.git
 	read -p 'Kippo Source Cloned to /opt/kippo : Press [Enter] key to continue...' fackEnterKey
@@ -48,7 +48,7 @@ install_kippo(){
 	chown kippo /etc/authbind/byport/22
 	chmod 777 /etc/authbind/byport/22
 	mkidir -p /opt/tds_zombie/logs/kippo/
-	cp /opt/tds_zombie/etc/confs/kippo/sshd_config /opt/kippo
+	cp /opt/tds_zombie/etc/confs/kippo/kippo.cfg /opt/kippo/kippo.cfg
 	clear
 }
 install_dionaea(){
