@@ -141,7 +141,7 @@ install_dionaea(){
 	clear
 	echo "We need to Install some Python Files : "
 	apt-get install python-pip python-netaddr build-essential python-dev -y
-	read -p "Now We ned to nstall some PIP Files : Press [Enter] key to continue..." fackEnterKey
+	read -p "Now we need to install some PIP Files : Press [Enter] key to continue..." fackEnterKey
 	pip install Django
 	pip install pygeoip
 	pip install django-pagination
@@ -149,6 +149,112 @@ install_dionaea(){
 	pip install django-compressor
 	pip install django-htmlmin
 	pip install django-filter
+	echo " "
+	echo "Now we Install Dionaea"
+	apt-get install libglib2.0-dev libssl-dev libcurl4-openssl-dev libreadline-dev libsqlite3-dev python-dev libtool automake autoconf build-essential subversion git-core flex bison pkg-config gnuplot -y
+	mkdir /opt/dionaea
+	mkdir /opt/dionaea/src
+	cd /opt/dionaea/src
+	
+	git clone git://git.carnivore.it/liblcfg.git liblcfg 
+	cd liblcfg/code
+	autoreconf -vi 
+	./configure –prefix=/opt/dionaea
+	make install
+	cd ../..
+	
+	git clone git://git.carnivore.it/libemu.git libemu
+	cd libemu
+	autoreconf –vi
+	./configure –prefix=/opt/dionaea
+	make install
+	cd ..
+	
+	git clone https://github.com/tgraf/libnl.git
+	cd libnl
+	autoreconf -vi
+	export LDFLAGS=-Wl,-rpath,/opt/dionaea/lib
+	./configure –prefix=/opt/dionaea
+	make
+	make install
+	cd ..
+	
+	mkdir libev
+	cd libev
+	wget http://dist.schmorp.de/libev/Attic/libev-4.04.tar.gz 
+	tar xfz libev-4.04.tar.gz 
+	cd libev-4.04
+	./configure –prefix=/opt/dionaea 
+	make install
+	cd ../..
+	
+	mkdir python-3.2
+	cd python-3.2
+	wget http://www.python.org/ftp/python/3.2.2/Python-3.2.2.tgz
+	tar xfz Python-3.2.2.tgz
+	cd Python-3.2.2/
+	./configure –enable-shared –prefix=/opt/dionaea \
+	–with-computed-gotos –enable-ipv6 \
+	LDFLAGS=”-Wl,-rpath=/opt/dionaea/lib/ -L/usr/lib/x86_64-linux-gnu/” 
+	make 
+	make install
+	cd ../..
+	
+	mkdir cython
+	cd cython
+	wget http://cython.org/release/Cython-0.15.tar.gz
+	tar xfz Cython-0.15.tar.gz
+	cd Cython-0.15 
+	/opt/dionaea/bin/python3 setup.py install
+	cd ../..
+	
+	mkdir /opt/dionaea/src/udns
+	cd /opt/dionaea/src/udns
+	wget http://www.corpit.ru/mjt/udns/old/udns_0.0.9.tar.gz 
+	tar xfz udns_0.0.9.tar.gz 
+	cd udns-0.0.9/ 
+	./configure 
+	make shared
+	cp udns.h /opt/dionaea/include/
+	cp *.so* /opt/dionaea/lib/ 
+	cd /opt/dionaea/lib 
+	ln -s libudns.so.0 libudns.so 
+	cd /opt/dionaea/src
+	
+	mkdir /opt/dionaea/src/libpcap
+	cd /opt/dionaea/src/libpcap
+	wget http://www.tcpdump.org/release/libpcap-1.1.1.tar.gz
+	tar xfz libpcap-1.1.1.tar.gz
+	cd libpcap-1.1.1
+	./configure –prefix=/opt/dionaea
+	make
+	make install
+	cd ../..
+	
+	git clone git://git.carnivore.it/dionaea.git dionaea
+	cd dionaea 
+	autoreconf -vi
+	./configure –with-lcfg-include=/opt/dionaea/include/ \
+	–with-lcfg-lib=/opt/dionaea/lib/ \
+	–with-python=/opt/dionaea/bin/python3.2 \
+	–with-cython-dir=/opt/dionaea/bin \
+	–with-udns-include=/opt/dionaea/include/ \
+	–with-udns-lib=/opt/dionaea/lib/ \
+	–with-emu-include=/opt/dionaea/include/ \
+	–with-emu-lib=/opt/dionaea/lib/ \
+	–with-gc-include=/usr/include/gc \
+	–with-ev-include=/opt/dionaea/include \
+	–with-ev-lib=/opt/dionaea/lib \
+	–with-nl-include=/opt/dionaea/include \
+	–with-nl-lib=/opt/dionaea/lib/ \
+	–with-curl-config=/usr/bin/ \
+	–with-pcap-include=/opt/dionaea/include \
+	–with-pcap-lib=/opt/dionaea/lib/
+	make
+	make install
+
+	cd /opt/dionaea/bin
+	./dionaea -D
 	
 	cd /opt/
 	wget https://github.com/benjiec/django-tables2-simplefilter/archive/master.zip -O django-tables2-simplefilter.zip
