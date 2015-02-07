@@ -107,6 +107,8 @@ install_kippo(){
 	echo "Installing Required Files for Kippo Graph"
 	apt-get install libapache2-mod-php5 php5-mysql php5-gd php5-curl -y
 	/etc/init.d/apache2 restart
+	
+	#Install Kippo Graph
 	cd /opt
 	git clone https://github.com/ikoniaris/kippo-graph.git
 	echo "Linking WWW"
@@ -114,6 +116,18 @@ install_kippo(){
 	cp /opt/tds_zombie/etc/confs/kippo-graph/config.php /opt/kippo-graph/config.php
 	#Set Ownership of Kippo Graph Files
 	chown -Rv kippo.kippo /opt/kippo-graph
+	chmod +w /opt/kippo-graph/generated-graphs
+	
+	#Install Kippo2Mysql
+	cd /opt
+	git clone https://github.com/ikoniaris/kippo2mysql
+	mv /opt/kippo2mysql/kippo2mysql.pl /opt/kippo2mysql/kippo2mysql.pl.bak
+	cp /opt/tds_zombie/etc/confs/kippo2mysql/kippo2mysql.pl /opt/kippo2mysql/kippo2mysql.pl
+	
+	cd /opt
+	mkdir kippo-log2db 
+	cd kippo-log2db
+	wget http://handlers.sans.org/jclausing/kippo-log2db.pl
 	
 }
 install_dionaea(){
