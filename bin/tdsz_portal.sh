@@ -29,15 +29,13 @@ install_kippo(){
 	clear
 	echo "We need to Update your System : "
 	apt-get update&&apt-get upgrade -y&&apt-get dist-upgrade -y&&update
-	read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
-	clear
 	echo "We need to Install System Files for Kippo : "
-	apt-get install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip mysql-server -y
+	apt-get install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip python-mysqldb mysql-server libcap2-bin -y
+	echo " "
 	read -p 'System File Installation Complete : Press [Enter] key to continue...' fackEnterKey
 	clear
-	echo "Adding Kippo User Acount"
+	echo "Checking for Kippo Account. Create if needed"
 	adduser --disabled-login kippo
-	read -p "Kippo User Added : Press [Enter] key to continue..." fackEnterKey
 	echo " "
 	echo "Cloning Kippo Git Source : Please Wait:"
 	cd /opt
@@ -48,8 +46,34 @@ install_kippo(){
 	touch /etc/authbind/byport/22
 	chown kippo /etc/authbind/byport/22
 	chmod 777 /etc/authbind/byport/22
-	mkidir -p /opt/tds_zombie/logs/kippo/
+	echo "Adding Kippo Files"
+	mkdir -p /opt/tds_zombie/logs/kippo/
 	cp /opt/tds_zombie/etc/confs/kippo/kippo.cfg /opt/kippo/kippo.cfg
+	echo ""
+	echo "Adding File System to Kippo HoneyPot"
+	cd /opt/kippo/utils
+	./createfs.py > fs.pickle
+	echo " "
+	echo "Adding Files to File System"
+	cd ../honeyfs
+	cat /etc/passwd > etc/passwd
+	cat /etc/hostname > etc/hostname
+	cat /etc/hosts > etc/hosts
+	cat /proc/cpuinfo > proc/cpuinfo
+	cat /proc/meminfo > proc/meminfo
+	cat /proc/version > proc/version
+	cat /etc/shadow > etc/shadow
+	echo ""
+	echo "Adding Extra Commands to Honeypot"
+	cd ../txtcmds
+	df > bin/df
+	dmesg > bin/dmesg
+	mount > bin/mount
+	ulimit > bin/ulimit
+	perl -v > bin/perl
+	ifconfig > sbin/ifconfig
+	setcap 'cap_net_bind_service=+ep' /usr/bin/python2.7
+	apt-get install phpmyadmin
 	clear
 }
 install_dionaea(){
