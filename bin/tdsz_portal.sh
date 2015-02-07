@@ -132,6 +132,8 @@ install_kippo(){
 	mv /opt/kippo-log2db/kippo-log2db.pl /opt/kippo-log2db/kippo-log2db.pl.bak
 	cp /opt/tds_zombie/etc/confs/kippo-log2db/kippo-log2db.pl /opt/kippo-log2db/kippo-log2db.pl
 	
+	echo " "
+	install_dionaea
 }
 install_dionaea(){
 	clear
@@ -150,6 +152,7 @@ install_dionaea(){
 	pip install django-htmlmin
 	pip install django-filter
 	echo " "
+	read -p "Check Install..." fackEnterKey
 	echo "Now we Install Dionaea"
 	apt-get install libglib2.0-dev libssl-dev libcurl4-openssl-dev libreadline-dev libsqlite3-dev python-dev libtool automake autoconf build-essential subversion git-core flex bison pkg-config gnuplot -y
 	mkdir /opt/dionaea
@@ -163,6 +166,7 @@ install_dionaea(){
 	make install
 	cd ../..
 	
+	read -p "Check Install..." fackEnterKey
 	git clone git://git.carnivore.it/libemu.git libemu
 	cd libemu
 	autoreconf -v -i
@@ -170,6 +174,7 @@ install_dionaea(){
 	make install
 	cd ..
 	
+	read -p "Check Install..." fackEnterKey
 	git clone https://github.com/tgraf/libnl.git
 	cd libnl
 	autoreconf -v -i
@@ -179,6 +184,7 @@ install_dionaea(){
 	make install
 	cd ..
 	
+	read -p "Check Install..." fackEnterKey
 	mkdir libev
 	cd libev
 	wget http://dist.schmorp.de/libev/Attic/libev-4.04.tar.gz 
@@ -188,6 +194,7 @@ install_dionaea(){
 	make install
 	cd ../..
 	
+	read -p "Check Install..." fackEnterKey
 	mkdir python-3.2
 	cd python-3.2
 	wget http://www.python.org/ftp/python/3.2.2/Python-3.2.2.tgz
@@ -198,6 +205,7 @@ install_dionaea(){
 	make install
 	cd ../..
 	
+	read -p "Check Install..." fackEnterKey
 	mkdir cython
 	cd cython
 	wget http://cython.org/release/Cython-0.15.tar.gz
@@ -205,7 +213,8 @@ install_dionaea(){
 	cd Cython-0.15 
 	/opt/dionaea/bin/python3 setup.py install
 	cd ../..
-	
+
+	read -p "Check Install..." fackEnterKey
 	mkdir /opt/dionaea/src/udns
 	cd /opt/dionaea/src/udns
 	wget http://www.corpit.ru/mjt/udns/old/udns_0.0.9.tar.gz 
@@ -213,12 +222,15 @@ install_dionaea(){
 	cd udns-0.0.9/ 
 	./configure 
 	make shared
+	
+	read -p "Check Install..." fackEnterKey
 	cp udns.h /opt/dionaea/include/
 	cp *.so* /opt/dionaea/lib/ 
 	cd /opt/dionaea/lib 
 	ln -s libudns.so.0 libudns.so 
 	cd /opt/dionaea/src
 	
+	read -p "Check Install..." fackEnterKey
 	mkdir /opt/dionaea/src/libpcap
 	cd /opt/dionaea/src/libpcap
 	wget http://www.tcpdump.org/release/libpcap-1.1.1.tar.gz
@@ -229,6 +241,7 @@ install_dionaea(){
 	make install
 	cd ../..
 	
+	read -p "Check Install..." fackEnterKey
 	git clone git://git.carnivore.it/dionaea.git dionaea
 	cd dionaea 
 	autoreconf -vi
@@ -250,10 +263,12 @@ install_dionaea(){
 	–with-pcap-lib=/opt/dionaea/lib/
 	make
 	make install
-
+	
+	read -p "Check Install..." fackEnterKey
 	cd /opt/dionaea/bin
 	./dionaea -D
 	
+	read -p "Check Install..." fackEnterKey
 	cd /opt/
 	wget https://github.com/benjiec/django-tables2-simplefilter/archive/master.zip -O django-tables2-simplefilter.zip
 	unzip django-tables2-simplefilter.zip
@@ -261,11 +276,13 @@ install_dionaea(){
 	cd django-tables2-simplefilter/
 	python setup.py install
 	
+	read -p "Check Install..." fackEnterKey
 	cd /opt/
 	git clone https://github.com/bro/pysubnettree.git
 	cd pysubnettree/
 	python setup.py install
 	
+	read -p "Check Install..." fackEnterKey
 	cd /opt/
 	wget http://nodejs.org/dist/v0.8.16/node-v0.8.16.tar.gz
 	tar xzvf node-v0.8.16.tar.gz
@@ -274,6 +291,7 @@ install_dionaea(){
 	make
 	make install
 	
+	read -p "Check Install..." fackEnterKey
 	npm install -g less
 	
 	cd /opt/
@@ -281,6 +299,7 @@ install_dionaea(){
 	unzip DionaeaFR.zip
 	mv DionaeaFR-master/ DionaeaFR
 	
+	read -p "Check Install..." fackEnterKey
 	cd /opt/
 	wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
 	wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
@@ -289,8 +308,10 @@ install_dionaea(){
 	mv GeoIP.dat DionaeaFR/DionaeaFR/static
 	mv GeoLiteCity.dat DionaeaFR/DionaeaFR/static
 	
+	read -p "Check Install..." fackEnterKey
 	apt-get install python-pip python-netaddr
 	apt-get install unzip sqlite
+	
 	read -p "DionaeaFR Installed : Press [Enter] key to continue..." fackEnterKey
 	cd /opt/DionaeaFR/
 	python manage.py collectstatic #type yes when asked
