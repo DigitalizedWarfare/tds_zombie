@@ -165,7 +165,7 @@ install_dionaea(){
 	cd /opt/
 	wget http://nodejs.org/dist/v0.12.0/node-v0.12.0-linux-x64.tar.gz
 	tar xzvf node-v0.12.0-linux-x64.tar.gz
-	cd node-v0.12.0-linux-x64
+	cd /opt/node-v0.12.0-linux-x64/lib/node_modules/npm
 	./configure
 	make
 	make install
