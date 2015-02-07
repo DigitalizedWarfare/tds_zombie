@@ -28,7 +28,7 @@ pause(){
 install_kippo(){
 	clear
 	echo "We need to Update your System : "
-	apt-get update
+	apt-get update&&apt-get upgrade -y&&apt-get dist-upgrade -y&&update
 	read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
 	clear
 	echo "We need to Install System Files for Kippo : "
