@@ -28,7 +28,7 @@ pause(){
 install_kippo(){
 	clear
 	echo "We need to Update your System : "
-	apt-get update&&apt-get upgrade -y&&apt-get dist-upgrade -y&&update
+	apt-get update&&apt-get upgrade -y&&apt-get dist-upgrade -y&&updatedb
 	echo "We need to Install System Files for Kippo : "
 	apt-get install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip python-mysqldb mysql-server libcap2-bin -y
 	echo " "
