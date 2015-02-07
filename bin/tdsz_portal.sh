@@ -32,24 +32,22 @@ install_kippo(){
 	echo "We need to Install System Files for Kippo : "
 	apt-get install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip python-mysqldb mysql-server libcap2-bin -y
 	echo " "
-	read -p 'System File Installation Complete : Press [Enter] key to continue...' fackEnterKey
-	clear
 	echo "Checking for Kippo Account. Create if needed"
 	adduser --disabled-login kippo
 	echo " "
 	echo "Cloning Kippo Git Source : Please Wait:"
 	cd /opt
 	git clone https://github.com/desaster/kippo.git
-	read -p 'Kippo Source Cloned to /opt/kippo : Press [Enter] key to continue...' fackEnterKey
-	clear
+	echo " "
 	echo "Setting Up Authbind"
 	touch /etc/authbind/byport/22
 	chown kippo /etc/authbind/byport/22
 	chmod 777 /etc/authbind/byport/22
-	echo "Adding Kippo Files"
+	echo " "
+	echo "Adding Kippo Config Files"
 	mkdir -p /opt/tds_zombie/logs/kippo/
 	cp /opt/tds_zombie/etc/confs/kippo/kippo.cfg /opt/kippo/kippo.cfg
-	echo ""
+	echo " "
 	echo "Adding File System to Kippo HoneyPot"
 	cd /opt/kippo/utils
 	./createfs.py > fs.pickle
@@ -63,7 +61,7 @@ install_kippo(){
 	cat /proc/meminfo > proc/meminfo
 	cat /proc/version > proc/version
 	cat /etc/shadow > etc/shadow
-	echo ""
+	echo " "
 	echo "Adding Extra Commands to Honeypot"
 	cd ../txtcmds
 	df > bin/df
@@ -78,23 +76,26 @@ install_kippo(){
 	mkdir -p /opt/tdsz_backup/etc/confs/apache2/sites-available/sites-enabled
 	
 	# Copy Files to Backup Folder
+	echo "Copying Files to Backup Folder"
 	cp /etc/apache2/ports.conf /opt/tdsz_backup/etc/confs/apache2/ports.conf
 	cp /etc/apache2/sites-available/* /opt/tdsz_backup/etc/confs/apache2/sites-available/
 	
 	# Backup and Move Old Files
+	echo "Moving Existing Apache Files"
 	mv /etc/apache2/ports.conf /etc/apache2/ports.conf.bak
 	mv /etc/apache2/sites-available/default /etc/apache2/sites-available/default.bak
 	mv /etc/apache2/sites-available/default-ssl /etc/apache2/sites-available/default-ssl.bak
 	
 	# Set Apache Files
+	echo "Copying New Apache Files"
 	cp /opt/tds_zombie/etc/confs/apache2/ports.conf /etc/apache2/ports.conf
 	cp /opt/tds_zombie/etc/confs/apache2/sites-available/* /etc/apache2/sites-available/
 	
-	echo "Restarting APache 2"
+	echo "Restarting Apache2 Server"
 	/etc/init.d/./apache2 restart
-	echo "Starting Kippo..."
+	echo "Starting Kippo SSH HoneyPot..."
 	su kippo authbind --deep /opt/kippo/./start.sh
-	read -p 'Kippo Should Have Started : Press [Enter] key to continue...' fackEnterKey
+	read -p 'Kippo Should Have Started : Press [Enter] key to continue Installation...' fackEnterKey
 	clear
 	echo "Installing Required Files for Kippo Graph"
 	apt-get install libapache2-mod-php5 php5-mysql php5-gd php5-curl -y
