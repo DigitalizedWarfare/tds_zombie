@@ -31,13 +31,6 @@ install_kippo(){
 	echo "We need to Install System Files for Kippo : "
 	apt-get install install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip -y
 	clear
-	echo "Running PIP Installs for Kippo : "
-	pip install twisted;
-	pip install pyasn1;
-	pip install pycrypto;
-	pip install MySQL-python;
-	read -p "PIP Installs Done : Press [Enter] key to continue..." fackEnterKey
-	clear
 	echo "Adding Kippo User Acount"
 	adduser --disabled-login kippo
 	read -p "Kippo User Added : Press [Enter] key to continue..." fackEnterKey
