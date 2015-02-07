@@ -28,7 +28,8 @@ pause(){
 install_kippo(){
 	clear
 	echo "We need to Update your System : "
-	apt-get update&&apt-get upgrade -y&&apt-get dist-upgrade -y&&updatedb
+	apt-get update&&echo " "&&echo "Repos Updated "&&apt-get upgrade -y&&echo " " &&echo "Base System up todate"&&echo " "&&apt-get dist-upgrade -y&&updatedb&&echo "System is Updated..."
+	echo " "
 	echo "We need to Install System Files for Kippo : "
 	apt-get install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip python-mysqldb mysql-server libcap2-bin -y
 	echo " "
@@ -200,7 +201,6 @@ main_menu() {
 	echo " various honeypots for you to get started on your way... Good Luck..."
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	echo ' 1. Honeypot Selection : Install Honeypots '
-	echo ' 2. Panel Configuration : Setup Panel '
 	echo " "
 	echo " 0. To Exit"
 }
@@ -255,10 +255,9 @@ config_menu() {
 main_menu_options(){
 	local menu_choice
 	echo " "
-	read -p " Main Menu Enter choice [ 1 - 2 or 0 ] " menu_choice
+	read -p " Main Menu Enter choice [ 1 or 0 ] " menu_choice
 	case $menu_choice in
 		1) system_install ;;
-		2) system_config ;;
 		0) exit 0;;
 		*) echo -e " ${RED}Error...${STD}" && sleep 2
 	esac
