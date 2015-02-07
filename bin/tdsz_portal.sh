@@ -73,7 +73,7 @@ install_kippo(){
 	perl -v > bin/perl
 	ifconfig > sbin/ifconfig
 	setcap 'cap_net_bind_service=+ep' /usr/bin/python2.7
-	apt-get install phpmyadmin
+	apt-get install phpmyadmin -y
 	clear
 }
 install_dionaea(){
