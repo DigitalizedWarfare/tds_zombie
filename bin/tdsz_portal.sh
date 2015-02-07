@@ -163,9 +163,9 @@ install_dionaea(){
 	python setup.py install
 	
 	cd /opt/
-	wget http://nodejs.org/dist/v0.12.0/node-v0.12.0-linux-x64.tar.gz
-	tar xzvf node-v0.12.0-linux-x64.tar.gz
-	cd /opt/node-v0.12.0-linux-x64/lib/node_modules/npm
+	wget http://nodejs.org/dist/v0.8.16/node-v0.8.16.tar.gz
+	tar xzvf node-v0.8.16.tar.gz
+	cd node-v0.8.16
 	./configure
 	make
 	make install
