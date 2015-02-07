@@ -114,7 +114,7 @@ install_kippo(){
 	#read -p 'Kippo Should Have Started : Press [Enter] key to continue Installation...' fackEnterKey
 	clear
 	echo "Installing Required Files for Kippo Graph"
-	apt-get install libapache2-mod-php5 php5-mysql php5-gd php5-curl -y
+	apt-get install libapache2-mod-php5 php5-mysql php5-gd php5-curl screen -y
 	/etc/init.d/apache2 restart
 	
 	#Install Kippo Graph
@@ -142,7 +142,7 @@ install_kippo(){
 	cp /opt/tds_zombie/etc/confs/kippo-log2db/kippo-log2db.pl /opt/kippo-log2db/kippo-log2db.pl
 	
 	echo " "
-	#install_dionaea
+	install_dionaea
 }
 install_dionaea(){
 	clear
@@ -328,9 +328,10 @@ install_dionaea(){
 	cp /opt/tds_zombie/etc/confs/dionaeafr/settings.py /opt/DionaeaFR/DionaeaFR/settings.py
 	#read -p "DionaeaFR Installed : Press [Enter] key to continue..." fackEnterKey
 	cd /opt/DionaeaFR/
+	mkdir -p /var/run/dionaeafr/
 	python manage.py collectstatic #type yes when asked
 	python manage.py migrate
-	python manage.py runserver 0.0.0.0:8000
+	screen -a -m -d -S DioneaeFR python manage.py runserver 0.0.0.0:8000
 	clear
 }
 install_honeyd(){
