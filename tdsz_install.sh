@@ -105,6 +105,7 @@ install_menu() {
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	echo " 1. Install Required System Files"
 	echo " 2. Install System Panel Sources"
+	echo " 3. Change SSH Ports"
 	echo " "
 	echo " 0. To Exit to the Main Menu "
 }
@@ -133,6 +134,7 @@ install_menu_options(){
 	case $install_choice in
 		1) install_deps ;;
 		2) install_panel ;;
+		3) change_ssh_port ;;
 		0) break;;
 		*) echo -e " ${RED}Error...${STD}" && sleep 2
 	esac
