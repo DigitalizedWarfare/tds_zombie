@@ -36,9 +36,9 @@ install_panel(){
 	clear
 	echo "We need to in Install the Panel System : "
 	read -p "Press [Enter] key to continue..." fackEnterKey
-	ln -s /opt/bin/tdsz_portal.sh /usr/bin/tdsz_portal
-	chmod +x /usr/bin/tdsz_portal
-	chmod +x /opt/bin/tdsz_portal.sh
+	ln -s /opt/tds_zombie/bin/tdsz_portal.sh /bin/tdsz_portal
+	chmod +x /bin/tdsz_portal
+	chmod +x /opt/tds_zombie/bin/tdsz_portal.sh
 	updatedb
 	clear
 }
@@ -125,7 +125,7 @@ install_menu() {
 main_menu_options(){
 	local menu_choice
 	echo " "
-	read -p " Main Menu Enter choice [ 1 - 3 or 0 ] " menu_choice
+	read -p " Main Menu Enter choice [ 1 or 0 ] " menu_choice
 	case $menu_choice in
 		1) system_install ;;
 		0) exit 0;;
