@@ -35,6 +35,10 @@ install_kippo(){
 	echo " "
 	echo "We need to Install System Files for Kippo ...."
 	apt-get install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip python-mysqldb mysql-server libcap2-bin -y
+	mv /etc/mysql/my.cnf /etc/mysql/my.cnf.bak
+	cp /opt/tds_zombie/etc/confs/mysql/my.cnf /etc/mysql/my.cnf
+	/etc/init.d/./mysql restart
+	
 	echo " "
 	echo "Checking for Kippo Account. Create if needed ....."
 	adduser --disabled-login kippo
@@ -76,6 +80,9 @@ install_kippo(){
 	ifconfig > sbin/ifconfig
 	setcap 'cap_net_bind_service=+ep' /usr/bin/python2.7
 	apt-get install phpmyadmin -y
+	mv /etc/phpmyadmin/config-db.php /etc/phpmyadmin/config-db.php.bak
+	cp /opt/tds_zombie/etc/confs/phpmyadmin/config-db.php /etc/phpmyadmin/config-db.php
+	
 	mkdir -p /opt/tdsz_backup/etc/confs/apache2/sites-available/
 	mkdir -p /opt/tdsz_backup/etc/confs/apache2/sites-available/sites-enabled
 	
@@ -102,7 +109,7 @@ install_kippo(){
 	/etc/init.d/./apache2 restart
 	echo "Starting Kippo SSH HoneyPot ..."
 	su kippo /opt/kippo/./start.sh
-	read -p 'Kippo Should Have Started : Press [Enter] key to continue Installation...' fackEnterKey
+	#read -p 'Kippo Should Have Started : Press [Enter] key to continue Installation...' fackEnterKey
 	clear
 	echo "Installing Required Files for Kippo Graph"
 	apt-get install libapache2-mod-php5 php5-mysql php5-gd php5-curl -y
@@ -139,11 +146,11 @@ install_dionaea(){
 	clear
 	echo "We need to Update your System : "
 	apt-get update
-	read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
+	#read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
 	clear
 	echo "We need to Install some Python Files : "
 	apt-get install python-pip python-netaddr build-essential python-dev -y
-	read -p "Now we need to install some PIP Files : Press [Enter] key to continue..." fackEnterKey
+	#read -p "Now we need to install some PIP Files : Press [Enter] key to continue..." fackEnterKey
 	pip install Django
 	pip install pygeoip
 	pip install django-pagination
@@ -152,13 +159,14 @@ install_dionaea(){
 	pip install django-htmlmin
 	pip install django-filter
 	echo " "
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	echo "Now we Install Dionaea"
 	apt-get install libglib2.0-dev libssl-dev libcurl4-openssl-dev libreadline-dev libsqlite3-dev python-dev libtool automake autoconf build-essential subversion git-core flex bison pkg-config gnuplot -y
 	mkdir /opt/dionaea
 	mkdir /opt/dionaea/src
 	cd /opt/dionaea/src
 	
+	#read -p "Check Install..." fackEnterKey
 	git clone git://git.carnivore.it/liblcfg.git liblcfg 
 	cd liblcfg/code
 	autoreconf -v -i 
@@ -166,7 +174,7 @@ install_dionaea(){
 	make install
 	cd ../..
 	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	git clone git://git.carnivore.it/libemu.git libemu
 	cd libemu
 	autoreconf -v -i
@@ -174,7 +182,7 @@ install_dionaea(){
 	make install
 	cd ..
 	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	git clone https://github.com/tgraf/libnl.git
 	cd libnl
 	autoreconf -v -i
@@ -184,7 +192,7 @@ install_dionaea(){
 	make install
 	cd ..
 	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	mkdir libev
 	cd libev
 	wget http://dist.schmorp.de/libev/Attic/libev-4.04.tar.gz 
@@ -194,7 +202,7 @@ install_dionaea(){
 	make install
 	cd ../..
 	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	mkdir python-3.2
 	cd python-3.2
 	wget http://www.python.org/ftp/python/3.2.2/Python-3.2.2.tgz
@@ -205,7 +213,7 @@ install_dionaea(){
 	make install
 	cd ../..
 	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	mkdir cython
 	cd cython
 	wget http://cython.org/release/Cython-0.15.tar.gz
@@ -214,7 +222,7 @@ install_dionaea(){
 	/opt/dionaea/bin/python3 setup.py install
 	cd ../..
 
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	mkdir /opt/dionaea/src/udns
 	cd /opt/dionaea/src/udns
 	wget http://www.corpit.ru/mjt/udns/old/udns_0.0.9.tar.gz 
@@ -223,14 +231,14 @@ install_dionaea(){
 	./configure 
 	make shared
 	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	cp udns.h /opt/dionaea/include/
 	cp *.so* /opt/dionaea/lib/ 
 	cd /opt/dionaea/lib 
 	ln -s libudns.so.0 libudns.so 
 	cd /opt/dionaea/src
 	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	mkdir /opt/dionaea/src/libpcap
 	cd /opt/dionaea/src/libpcap
 	wget http://www.tcpdump.org/release/libpcap-1.1.1.tar.gz
@@ -241,7 +249,7 @@ install_dionaea(){
 	make install
 	cd ../..
 	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	git clone git://git.carnivore.it/dionaea.git dionaea
 	cd dionaea 
 	autoreconf -v -i
@@ -264,11 +272,7 @@ install_dionaea(){
 	make
 	make install
 	
-	read -p "Check Install..." fackEnterKey
-	cd /opt/dionaea/bin
-	./dionaea -D
-	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	cd /opt/
 	wget https://github.com/benjiec/django-tables2-simplefilter/archive/master.zip -O django-tables2-simplefilter.zip
 	unzip django-tables2-simplefilter.zip
@@ -276,13 +280,13 @@ install_dionaea(){
 	cd django-tables2-simplefilter/
 	python setup.py install
 	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	cd /opt/
 	git clone https://github.com/bro/pysubnettree.git
 	cd pysubnettree/
 	python setup.py install
 	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	cd /opt/
 	wget http://nodejs.org/dist/v0.8.16/node-v0.8.16.tar.gz
 	tar xzvf node-v0.8.16.tar.gz
@@ -291,7 +295,7 @@ install_dionaea(){
 	make
 	make install
 	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	npm install -g less
 	
 	cd /opt/
@@ -299,7 +303,7 @@ install_dionaea(){
 	unzip DionaeaFR.zip
 	mv DionaeaFR-master/ DionaeaFR
 	
-	read -p "Check Install..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
 	cd /opt/
 	wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
 	wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
@@ -308,13 +312,20 @@ install_dionaea(){
 	mv GeoIP.dat DionaeaFR/DionaeaFR/static
 	mv GeoLiteCity.dat DionaeaFR/DionaeaFR/static
 	
-	read -p "Check Install..." fackEnterKey
-	apt-get install python-pip python-netaddr
-	apt-get install unzip sqlite
+	#read -p "Check Install..." fackEnterKey
+	apt-get install python-pip python-netaddr -y
+	apt-get install unzip sqlite p0f -y
 	
-	read -p "DionaeaFR Installed : Press [Enter] key to continue..." fackEnterKey
+	#read -p "Check Install..." fackEnterKey
+	mv /opt/dionaea/etc/dionaea/dionaea.conf /opt/dionaea/etc/dionaea/dionaea.conf.bak
+	cp /opt/tds_zombie/etc/confs/dionaea/dionaea.conf /opt/dionaea/etc/dionaea/dionaea.conf
+	cd /opt/dionaea/bin
+	./dionaea -D
+
+	cp /opt/tds_zombie/etc/confs/dionaeafr/settings.py /opt/DionaeaFR/DionaeaFR/settings.py
+	#read -p "DionaeaFR Installed : Press [Enter] key to continue..." fackEnterKey
 	cd /opt/DionaeaFR/
-	python manage.py collectstatic #type yes when asked
+	#python manage.py collectstatic #type yes when asked
 	python manage.py runserver 0.0.0.0:8000
 	clear
 }

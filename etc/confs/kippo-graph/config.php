@@ -23,7 +23,7 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', 'TheDeadSquad');
 define('DB_NAME', 'kippo');
-define('DB_PORT', '3306');
+define('DB_PORT', '53306');
 
 # Which geolocation method should be used -- Default: LOCAL (MaxMind)
 # Note: LOCAL (MaxMind) enables additional fields in various components.

@@ -40,7 +40,7 @@ $sql_user = 'root';
 $sql_password = 'TheDeadSquad';
 $database = 'kippolog2db';
 $hostname = 'localhost';
-$port = '3306';
+$port = '53306';
 
 #Connect to the database
 $dbh = DBI->connect("dbi:mysql:database=$database;host=$hostname;port=$port", $sql_user, $sql_password);
