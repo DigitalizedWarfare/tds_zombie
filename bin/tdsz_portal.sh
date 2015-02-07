@@ -32,7 +32,7 @@ install_kippo(){
 	read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
 	clear
 	echo "We need to Install System Files for Kippo : "
-	apt-get install install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip -y
+	apt-get install install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip mysql-server -y
 	clear
 	echo "Adding Kippo User Acount"
 	adduser --disabled-login kippo
@@ -47,7 +47,8 @@ install_kippo(){
 	touch /etc/authbind/byport/22
 	chown kippo /etc/authbind/byport/22
 	chmod 777 /etc/authbind/byport/22
-	
+	mkidir -p /opt/tds_zombie/logs/kippo/
+	cp /opt/tds_zombie/etc/confs/kippo/sshd_config /opt/kippo
 	clear
 }
 install_dionaea(){
