@@ -90,11 +90,12 @@ install_kippo(){
 	echo "Copying New Apache Files"
 	cp /opt/tds_zombie/etc/confs/apache2/ports.conf /etc/apache2/ports.conf
 	cp /opt/tds_zombie/etc/confs/apache2/sites-available/* /etc/apache2/sites-available/
-	
+
+	#Restart Apache2
 	echo "Restarting Apache2 Server"
 	/etc/init.d/./apache2 restart
 	echo "Starting Kippo SSH HoneyPot..."
-	su kippo authbind --deep /opt/kippo/./start.sh
+	su kippo /opt/kippo/./start.sh
 	read -p 'Kippo Should Have Started : Press [Enter] key to continue Installation...' fackEnterKey
 	clear
 	echo "Installing Required Files for Kippo Graph"
