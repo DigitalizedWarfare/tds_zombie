@@ -158,23 +158,23 @@ install_dionaea(){
 	
 	git clone git://git.carnivore.it/liblcfg.git liblcfg 
 	cd liblcfg/code
-	autoreconf -vi 
-	./configure –prefix=/opt/dionaea
+	autoreconf -v -i 
+	./configure --prefix=/opt/dionaea
 	make install
 	cd ../..
 	
 	git clone git://git.carnivore.it/libemu.git libemu
 	cd libemu
-	autoreconf –vi
-	./configure –prefix=/opt/dionaea
+	autoreconf -v -i
+	./configure --prefix=/opt/dionaea
 	make install
 	cd ..
 	
 	git clone https://github.com/tgraf/libnl.git
 	cd libnl
-	autoreconf -vi
+	autoreconf -v -i
 	export LDFLAGS=-Wl,-rpath,/opt/dionaea/lib
-	./configure –prefix=/opt/dionaea
+	./configure --prefix=/opt/dionaea
 	make
 	make install
 	cd ..
@@ -184,7 +184,7 @@ install_dionaea(){
 	wget http://dist.schmorp.de/libev/Attic/libev-4.04.tar.gz 
 	tar xfz libev-4.04.tar.gz 
 	cd libev-4.04
-	./configure –prefix=/opt/dionaea 
+	./configure --prefix=/opt/dionaea 
 	make install
 	cd ../..
 	
@@ -193,9 +193,7 @@ install_dionaea(){
 	wget http://www.python.org/ftp/python/3.2.2/Python-3.2.2.tgz
 	tar xfz Python-3.2.2.tgz
 	cd Python-3.2.2/
-	./configure –enable-shared –prefix=/opt/dionaea \
-	–with-computed-gotos –enable-ipv6 \
-	LDFLAGS=”-Wl,-rpath=/opt/dionaea/lib/ -L/usr/lib/x86_64-linux-gnu/” 
+	./configure --enable-shared --prefix=/opt/dionaea --with-computed-gotos --enable-ipv6 --host=x86_32 LDFLAGS="-Wl,-rpath=/opt/dionaea/lib/ -L/usr/lib/x86_32-linux-gnu/" 
 	make 
 	make install
 	cd ../..
@@ -226,7 +224,7 @@ install_dionaea(){
 	wget http://www.tcpdump.org/release/libpcap-1.1.1.tar.gz
 	tar xfz libpcap-1.1.1.tar.gz
 	cd libpcap-1.1.1
-	./configure –prefix=/opt/dionaea
+	./configure -prefix=/opt/dionaea
 	make
 	make install
 	cd ../..
