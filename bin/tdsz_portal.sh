@@ -123,7 +123,7 @@ install_kippo(){
 	cp /opt/tds_zombie/etc/confs/kippo-graph/config.php /opt/kippo-graph/config.php
 	#Set Ownership of Kippo Graph Files
 	chown -Rv kippo.kippo /opt/kippo-graph
-	chmod +w /opt/kippo-graph/generated-graphs
+	chmod -Rv 777 /opt/kippo-graph/generated-graphs
 	
 	#Install Kippo2Mysql
 	cd /opt
@@ -288,9 +288,10 @@ install_dionaea(){
 	
 	#read -p "Check Install..." fackEnterKey
 	cd /opt/
-	wget http://nodejs.org/dist/v0.8.16/node-v0.8.16.tar.gz
-	tar xzvf node-v0.8.16.tar.gz
-	cd node-v0.8.16
+	#wget http://nodejs.org/dist/v0.8.16/node-v0.8.16.tar.gz
+	wget http://nodejs.org/dist/v0.10.33/node-v0.10.33.tar.gz
+	tar xzvf node-v0.10.33.tar.gz
+	cd node-v0.10.33
 	./configure
 	make
 	make install
@@ -325,7 +326,8 @@ install_dionaea(){
 	cp /opt/tds_zombie/etc/confs/dionaeafr/settings.py /opt/DionaeaFR/DionaeaFR/settings.py
 	#read -p "DionaeaFR Installed : Press [Enter] key to continue..." fackEnterKey
 	cd /opt/DionaeaFR/
-	#python manage.py collectstatic #type yes when asked
+	python manage.py collectstatic #type yes when asked
+	python manage.py migrate
 	python manage.py runserver 0.0.0.0:8000
 	clear
 }
