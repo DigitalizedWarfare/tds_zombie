@@ -27,33 +27,36 @@ pause(){
 # ----------------------------------------------
 install_kippo(){
 	clear
-	echo "We need to Update your System : "
+	echo "We are nexting going to Update your system and install kippo "
+	echo "And other packages from thier GIT Repos so we know they are current"
+	echo "We will also change apache ports as we may want to run other honeypots"
+	echo "on this server instance.............."
 	apt-get update&&echo " "&&echo "Repos Updated "&&apt-get upgrade -y&&echo " " &&echo "Base System up todate"&&echo " "&&apt-get dist-upgrade -y&&updatedb&&echo "System is Updated..."
 	echo " "
-	echo "We need to Install System Files for Kippo : "
+	echo "We need to Install System Files for Kippo ...."
 	apt-get install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip python-mysqldb mysql-server libcap2-bin -y
 	echo " "
-	echo "Checking for Kippo Account. Create if needed"
+	echo "Checking for Kippo Account. Create if needed ....."
 	adduser --disabled-login kippo
 	echo " "
-	echo "Cloning Kippo Git Source : Please Wait:"
+	echo "Cloning Kippo Git Source : Please Wait ......."
 	cd /opt
 	git clone https://github.com/desaster/kippo.git
 	echo " "
-	echo "Setting Up Authbind"
+	echo "Setting Up Authbind ...."
 	touch /etc/authbind/byport/22
 	chown kippo /etc/authbind/byport/22
 	chmod 777 /etc/authbind/byport/22
 	echo " "
-	echo "Adding Kippo Config Files"
+	echo "Adding Kippo Config Files ...."
 	mkdir -p /opt/tds_zombie/logs/kippo/
 	cp /opt/tds_zombie/etc/confs/kippo/kippo.cfg /opt/kippo/kippo.cfg
 	echo " "
-	echo "Adding File System to Kippo HoneyPot"
+	echo "Adding File System to Kippo HoneyPot ...."
 	cd /opt/kippo/utils
 	./createfs.py > fs.pickle
 	echo " "
-	echo "Adding Files to File System"
+	echo "Adding Files to File System ..."
 	cd ../honeyfs
 	cat /etc/passwd > etc/passwd
 	cat /etc/hostname > etc/hostname
@@ -63,7 +66,7 @@ install_kippo(){
 	cat /proc/version > proc/version
 	cat /etc/shadow > etc/shadow
 	echo " "
-	echo "Adding Extra Commands to Honeypot"
+	echo "Adding Extra Commands to Honeypot ...."
 	cd ../txtcmds
 	df > bin/df
 	dmesg > bin/dmesg
@@ -77,25 +80,27 @@ install_kippo(){
 	mkdir -p /opt/tdsz_backup/etc/confs/apache2/sites-available/sites-enabled
 	
 	# Copy Files to Backup Folder
-	echo "Copying Files to Backup Folder"
+	echo "Copying Files to Backup Folder ..."
 	cp /etc/apache2/ports.conf /opt/tdsz_backup/etc/confs/apache2/ports.conf
 	cp /etc/apache2/sites-available/* /opt/tdsz_backup/etc/confs/apache2/sites-available/
 	
 	# Backup and Move Old Files
-	echo "Moving Existing Apache Files"
+	echo "Moving Existing Apache Files ..."
 	mv /etc/apache2/ports.conf /etc/apache2/ports.conf.bak
 	mv /etc/apache2/sites-available/default /etc/apache2/sites-available/default.bak
 	mv /etc/apache2/sites-available/default-ssl /etc/apache2/sites-available/default-ssl.bak
 	
 	# Set Apache Files
-	echo "Copying New Apache Files"
+	echo "Copying New Apache Files ...."
 	cp /opt/tds_zombie/etc/confs/apache2/ports.conf /etc/apache2/ports.conf
 	cp /opt/tds_zombie/etc/confs/apache2/sites-available/* /etc/apache2/sites-available/
 
+	#Set Ownership of Kippo Files
+	chown -Rv kippo.kippo /opt/kippo
 	#Restart Apache2
-	echo "Restarting Apache2 Server"
+	echo "Restarting Apache2 Server ...."
 	/etc/init.d/./apache2 restart
-	echo "Starting Kippo SSH HoneyPot..."
+	echo "Starting Kippo SSH HoneyPot ..."
 	su kippo /opt/kippo/./start.sh
 	read -p 'Kippo Should Have Started : Press [Enter] key to continue Installation...' fackEnterKey
 	clear
@@ -106,6 +111,9 @@ install_kippo(){
 	git clone https://github.com/ikoniaris/kippo-graph.git
 	echo "Linking WWW"
 	ln -s /opt/kippo-graph /opt/tds_zombie/www/kippo-graph
+	
+	#Set Ownership of Kippo Graph Files
+	chown -Rv kippo.kippo /opt/kippo-graph
 	
 }
 install_dionaea(){
