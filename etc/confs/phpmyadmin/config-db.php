@@ -15,5 +15,5 @@ $dbpass='TheDeadSquad';
 $basepath='';
 $dbname='phpmyadmin';
 $dbserver='127.0.0.1';
-$dbport='153306';
+$dbport='53306';
 $dbtype='mysql';
