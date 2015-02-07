@@ -111,7 +111,7 @@ install_kippo(){
 	git clone https://github.com/ikoniaris/kippo-graph.git
 	echo "Linking WWW"
 	ln -s /opt/kippo-graph /opt/tds_zombie/www/kippo-graph
-	
+	cp /opt/tds_zombie/etc/confs/kippo-graph/config.php /opt/kippo-graph/config.php
 	#Set Ownership of Kippo Graph Files
 	chown -Rv kippo.kippo /opt/kippo-graph
 	
