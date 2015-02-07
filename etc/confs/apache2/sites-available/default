@@ -1,12 +1,12 @@
 <VirtualHost *:15080>
 	ServerAdmin webmaster@localhost
 
-	DocumentRoot /opt/tdsz_portal/www
+	DocumentRoot /opt/tds_zombie/www
 	<Directory />
 		Options FollowSymLinks
 		AllowOverride None
 	</Directory>
-	<Directory /opt/tdsz_portal/www/>
+	<Directory /opt/tds_zombie/www/>
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride None
 		Order allow,deny

@@ -77,17 +77,31 @@ install_kippo(){
 	mkdir -p /opt/tdsz_backup/etc/confs/apache2/sites-available/
 	mkdir -p /opt/tdsz_backup/etc/confs/apache2/sites-available/sites-enabled
 	
+	# Copy Files to Backup Folder
 	cp /etc/apache2/ports.conf /opt/tdsz_backup/etc/confs/apache2/ports.conf
 	cp /etc/apache2/sites-available/* /opt/tdsz_backup/etc/confs/apache2/sites-available/
 	
+	# Backup and Move Old Files
 	mv /etc/apache2/ports.conf /etc/apache2/ports.conf.bak
 	mv /etc/apache2/sites-available/default /etc/apache2/sites-available/default.bak
 	mv /etc/apache2/sites-available/default-ssl /etc/apache2/sites-available/default-ssl.bak
 	
+	# Set Apache Files
 	cp /opt/tds_zombie/etc/confs/apache2/ports.conf /etc/apache2/ports.conf
 	cp /opt/tds_zombie/etc/confs/apache2/sites-available/* /etc/apache2/sites-available/
+	
+	echo "Restarting APache 2"
 	/etc/init.d/./apache2 restart
+	echo "Starting Kippo..."
+	authbind --deep /opt/kippo/./start.sh
+	read -p 'Kippo Should Have Started : Press [Enter] key to continue...' fackEnterKey
 	clear
+	echo "Installing Required Files for Kippo Graph"
+	apt-get install libapache2-mod-php5 php5-mysql php5-gd php5-curl -y
+	/etc/init.d/apache2 restart
+	cd /opt
+	git clone https://github.com/ikoniaris/kippo-graph.git
+	
 }
 install_dionaea(){
 	clear
