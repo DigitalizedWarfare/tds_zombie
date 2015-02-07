@@ -95,8 +95,7 @@ main_menu() {
 	echo " HoneyPot is designed to capture certain attacks. I have build a few"
 	echo " various honeypots for you to get started on your way... Good Luck..."
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	echo ' 1. System Installation : Install and Update First '
-	echo ' 2. Panel Installation : Install Panel from Git Source '
+	echo ' 1. System Installation '
 	echo " "
 	echo " 0. To Exit The Dead Squad Zombie Installer"
 }
