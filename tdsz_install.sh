@@ -46,6 +46,7 @@ install_panel(){
 	read -p "GIT Cloned : Press [Enter] key to continue..." fackEnterKey
 	ln -s /opt/bin/tdz_portal.sh /usr/local/bin/tdz_portal
 	chmod +x /usr/local/bin/tdz_portal
+	chmod +x /opt/bin/tdz_portal.sh
 	clear
 }
 
