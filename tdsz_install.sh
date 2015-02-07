@@ -28,22 +28,17 @@ pause(){
 install_deps(){
 	clear
 	echo "We need to Update your System : "
-	apt-get update
+	apt-get update&&apt-get upgrade -y&&apt-get dist-upgrade -y&&updatedb
 	read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
-	clear
-	echo "We need to Install Some System Support Files : "
-	apt-get install git -y
-	read -p "System Support Files Installed : Press [Enter] key to continue..." fackEnterKey
-	updatedb
 	clear
 }
 install_panel(){
 	clear
 	echo "We need to in Install the Panel System : "
 	read -p "Press [Enter] key to continue..." fackEnterKey
-	ln -s /opt/bin/tdz_portal.sh /usr/bin/tdz_portal
-	chmod +x /usr/bin/tdz_portal
-	chmod +x /opt/bin/tdz_portal.sh
+	ln -s /opt/bin/tdsz_portal.sh /usr/bin/tdsz_portal
+	chmod +x /usr/bin/tdsz_portal
+	chmod +x /opt/bin/tdsz_portal.sh
 	updatedb
 	clear
 }
@@ -63,7 +58,7 @@ change_ssh_port(){
 		echo "again to the correct port....15022 "
 		read -p "Press [Enter] key to restart SSH services.." fackEnterKey
 		/etc/init.d/./ssh restart
-		exit
+		clear
 }
 
 # ----------------------------------------------
