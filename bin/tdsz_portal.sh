@@ -294,6 +294,9 @@ install_dionaea(){
 	apt-get install python-pip python-netaddr
 	apt-get install unzip sqlite
 	read -p "DionaeaFR Installed : Press [Enter] key to continue..." fackEnterKey
+	cd /opt/DionaeaFR/
+	python manage.py collectstatic #type yes when asked
+	python manage.py runserver 0.0.0.0:8000
 	clear
 }
 install_honeyd(){
