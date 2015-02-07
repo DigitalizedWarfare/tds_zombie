@@ -59,9 +59,9 @@ change_ssh_port(){
 		echo "again to the correct port.... "
 		read -p "Press [Enter] key to continue port change and restart ssh services.." fackEnterKey
 		clear
-		mkdir -p /opt/tdsz_backup/confs/kippo/ssh_default
-		mv -v /etc/ssh/sshd_config /opt/tdsz_backup/confs/kippo/ssh_default/
-		cp -v /opt/tds_zombie/etc/confs/ssh/sshd_conf /etc/ssh/
+		mkdir -p /opt/tdsz_backup/etc/confs/ssh/ssh_default
+		mv -v /etc/ssh/sshd_config /opt/tdsz_backup/etc/confs/ssh/sh_default/
+		cp -v /opt/tds_zombie/etc/confs/ssh/sshd_conf /etc/ssh/sshd_conf 
 		reload ssh
 		exit
 }

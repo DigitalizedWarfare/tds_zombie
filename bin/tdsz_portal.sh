@@ -42,9 +42,12 @@ install_kippo(){
 	cd /opt
 	git clone https://github.com/desaster/kippo.git
 	read -p 'Kippo Source Cloned to /opt/kippo : Press [Enter] key to continue...' fackEnterKey
-	mkdir -p /opt/tdsz_backup/confs/kippo/ssh_default
-	mv -v /etc/ssh/sshd_config /opt/tdsz_backup/confs/kippo/ssh_default/
-	cp -v /opt/tds_zombie/etc/confs/ssh/sshd_conf /etc/ssh/
+	clear
+	echo "Setting Up Authbind"
+	touch /etc/authbind/byport/22
+	chown kippo /etc/authbind/byport/22
+	chmod 777 /etc/authbind/byport/22
+	
 	clear
 }
 install_dionaea(){
