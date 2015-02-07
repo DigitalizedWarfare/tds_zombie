@@ -44,6 +44,8 @@ install_panel(){
 	echo "We need to Install Source from GIT Hub : "
 	cd /opt&&git clone https://github.com/DigitalizedWarfare/tds_zombie.git
 	read -p "GIT Cloned : Press [Enter] key to continue..." fackEnterKey
+	ln -s /opt/bin/tdz_portal.sh /usr/local/bin/tdz_portal
+	chmod +x /usr/local/bin/tdz_portal
 	clear
 }
 
