@@ -62,6 +62,8 @@ change_ssh_port(){
 		mkdir -p /opt/tdsz_backup/confs/kippo/ssh_default
 		mv -v /etc/ssh/sshd_config /opt/tdsz_backup/confs/kippo/ssh_default/
 		cp -v /opt/tds_zombie/etc/confs/ssh/sshd_conf /etc/ssh/
+		reload ssh
+		exit
 }
 
 # ----------------------------------------------
