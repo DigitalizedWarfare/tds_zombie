@@ -32,7 +32,7 @@ install_kippo(){
 	read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
 	clear
 	echo "We need to Install System Files for Kippo : "
-	apt-get install install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip mysql-server -y
+	apt-get install python-dev openssl python-openssl python-pyasn1 python-twisted authbind build-essential libmysqlclient-dev python-pip mysql-server -y
 	clear
 	echo "Adding Kippo User Acount"
 	adduser --disabled-login kippo
