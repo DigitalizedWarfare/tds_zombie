@@ -4,7 +4,7 @@ clear
 #  The Dead Squad Zombie HoneyPot Installer
 #  Christian Marvel
 #  By Digitalized Warfare for HTTP://WWW.THEDEADSQUAD.COM
-#  This Cannot Be REMOVED. 
+#  This Cannot Be REMOVED. Test
 
 ## ----------------------------------
 # Define variables
