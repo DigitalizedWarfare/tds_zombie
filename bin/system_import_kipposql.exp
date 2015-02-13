@@ -1,6 +1,6 @@
 #!/usr/bin/expect
 
-set timeout 30
+set timeout 8
 set user [lindex $argv 0]
 set password [lindex $argv 1]
 
@@ -14,7 +14,7 @@ send "GRANT ALL ON kippo.* TO 'kippo'@'localhost' IDENTIFIED BY 'TheDeadSquad';\
 expect "$"
 send "exit\r";
 
-spawn mysql-u kippo -p
+spawn mysql -u kippo -p
 expect "password:"
 send "TheDeadSquad\r";
 expect "$"
