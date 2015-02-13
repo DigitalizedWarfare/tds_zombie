@@ -5,7 +5,7 @@ set user [lindex $argv 0]
 set passwrord [lindex $argv 1]
 
 spawn adduser $user
-expect "psssword:"
+expect "password:"
 send "$password\r";
 expect "Retype"
 send "$password\r";

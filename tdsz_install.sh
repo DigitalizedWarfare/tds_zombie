@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-#!/bin/bash
+
 #  The Dead Squad Zombie HoneyPot Installer
 #  Christian Marvel
 #  By Digitalized Warfare for HTTP://WWW.THEDEADSQUAD.COM
