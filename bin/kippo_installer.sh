@@ -39,8 +39,8 @@ echo " Starting Mysql Server ...."
 echo " "
 echo "Creating Kippo User Account ...."
 #adduser --disabled-login kippo
-sh /opt/tds_zombie/bin/system_useradd.exp kippo TheDeadSquad
-sh /opt/tds_zombie/bin/system_import_kipposql.exp kippo TheDeadSquad
+expect /opt/tds_zombie/bin/system_useradd.exp kippo TheDeadSquad
+expect /opt/tds_zombie/bin/system_import_kipposql.exp kippo TheDeadSquad
 
 # We Need LATEST Build
 echo " "
