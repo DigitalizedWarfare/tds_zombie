@@ -38,7 +38,10 @@ echo " Starting Mysql Server ...."
 # Kippo needs a User Account to run. Not as Root.	
 echo " "
 echo "Creating Kippo User Account ...."
-adduser --disabled-login kippo
+#adduser --disabled-login kippo
+sh /opt/tds_zombie/bin/system_useradd.exp kippo TheDeadSquad
+
+# We Need LATEST Build
 echo " "
 echo "Getting Latest Kippo from GITHUB ...."
 cd /opt
