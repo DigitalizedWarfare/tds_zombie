@@ -28,7 +28,7 @@ pause(){
 install_deps(){
 	clear
 	echo "We need to Update your System : "
-	apt-get update&&apt-get upgrade -y&&apt-get dist-upgrade -y&&updatedb
+	apt-get update&&apt-get upgrade -y&&apt-get dist-upgrade -y&&apt-get install expect tcl8.5 -y&&updatedb
 	read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
 	clear
 	updatedb

@@ -1,0 +1,12 @@
+#!/usr/bin/expect
+
+set timeout 30
+set user [lindex $argv 0]
+set passwrord [lindex $argv 1]
+
+spawn adduser $user
+expect "pssword:"
+send "$password\r";
+expect "Retype"
+send "$password\r";
+interact
