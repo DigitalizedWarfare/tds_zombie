@@ -12,6 +12,10 @@ send "CREATE DATABASE kippo;\r";
 expect "$"
 send "GRANT ALL ON kippo.* TO 'kippo'@'localhost' IDENTIFIED BY 'TheDeadSquad';\r";
 expect "$"
+send "CREATE DATABASE kippo2mysql;\r";
+expect "$"
+send "GRANT ALL ON kippo2mysql.* TO 'kippo'@'localhost' IDENTIFIED BY 'TheDeadSquad';\r";
+expect "$"
 send "exit\r";
 
 spawn mysql -u kippo -p

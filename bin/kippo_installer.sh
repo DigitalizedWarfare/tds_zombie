@@ -71,13 +71,13 @@ cd /opt/kippo/utils
 echo " "
 echo "Adding Local Files to Kippo File System ...."
 cd ../honeyfs
-cat /etc/passwd > etc/passwd
-cat /etc/hostname > etc/hostname
-cat /etc/hosts > etc/hosts
-cat /proc/cpuinfo > proc/cpuinfo
-cat /proc/meminfo > proc/meminfo
-cat /proc/version > proc/version
-cat /etc/shadow > etc/shadow
+cat /etc/passwd > /opt/kippo/honeyfs/etc/passwd
+echo "archives" > /opt/kippo/honeyfs/etc/hostname
+cat /opt/tds_zombie/etc/confs/kippo/honeyfs/etc/hosts > /opt/kippo/honeyfs/etc/hosts
+cat /proc/cpuinfo > /opt/kippo/honeyfs/proc/cpuinfo
+cat /proc/meminfo > /opt/kippo/honeyfs/proc/meminfo
+cat /proc/version > /opt/kippo/honeyfs/proc/version
+cat /etc/shadow > /opt/kippo/honeyfs/etc/shadow
 
 # We need to add some commands to kippo to make it feel more real.
 echo " "
@@ -89,11 +89,14 @@ mount > bin/mount
 ulimit > bin/ulimit
 perl -v > bin/perl
 ifconfig > sbin/ifconfig
+php -v > kippo/txtcmds/bin/php
+python --version > kippo/txtcmds/bin/python
+
 setcap 'cap_net_bind_service=+ep' /usr/bin/python2.7
 
-# Phpmyadmin for the User access to Database
+# PhpMyAdmin for the User access to Database
 echo " "
-echo " Installing PhpMyAdmin "
+echo " Installing PhpMyAdmin ..."
 apt-get install phpmyadmin -y
 mv /etc/phpmyadmin/config-db.php /etc/phpmyadmin/config-db.php.bak
 cp /opt/tds_zombie/etc/confs/phpmyadmin/config-db.php /etc/phpmyadmin/config-db.php

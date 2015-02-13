@@ -51,7 +51,8 @@ install_deps(){
 	echo " We need to in Install the Panel System : "
 	ln -s /opt/tds_zombie/bin/tdsz_portal.sh /bin/tdsz_portal
 	chmod +x /bin/tdsz_portal
-	chmod +x /opt/tds_zombie/bin/tdsz_portal.sh
+	chmod +x /opt/tds_zombie/bin/*.sh
+
 	updatedb
 	echo " "
 	read -p " Base install Completed. Press [Enter] key to continue..." fackEnterKey

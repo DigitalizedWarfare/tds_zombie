@@ -41,11 +41,11 @@ my ($left,$right,$cnt,$connections);
 my $sensorid = `md5sum $kippoconfdir/kippo.cfg | cut -d " " -f 1`;
 
 #MySQL server values - change accordingly!
-$sql_user = 'root';
+$sql_user = 'kippo';
 $sql_password = 'TheDeadSquad';
 $database = 'kippo2mysql';
 $hostname = 'localhost';
-$port = '3306';
+$port = '53306';
 
 #Connect to the database
 $dbh = DBI->connect("dbi:mysql:database=$database;host=$hostname;port=$port", $sql_user, $sql_password);
