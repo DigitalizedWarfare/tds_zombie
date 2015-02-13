@@ -63,38 +63,6 @@ echo "Moving Kippo Config File ...."
 mkdir -p /opt/tds_zombie/logs/kippo/
 cp /opt/tds_zombie/etc/confs/kippo/kippo.cfg /opt/kippo/kippo.cfg
 
-# This will generate a filesystem on the honeypot from our current.
-echo " "
-echo "Adding File System to Kippo HoneyPot. May take a while ...."
-cd /opt/kippo/utils
-./createfs.py > fs.pickle
-
-# We need to populate the kippo system
-echo " "
-echo "Adding Local Files to Kippo File System ...."
-cd ../honeyfs
-cat /etc/passwd > /opt/kippo/honeyfs/etc/passwd
-echo "archives" > /opt/kippo/honeyfs/etc/hostname
-cat /opt/tds_zombie/etc/confs/kippo/honeyfs/etc/hosts > /opt/kippo/honeyfs/etc/hosts
-cat /proc/cpuinfo > /opt/kippo/honeyfs/proc/cpuinfo
-cat /proc/meminfo > /opt/kippo/honeyfs/proc/meminfo
-cat /proc/version > /opt/kippo/honeyfs/proc/version
-cat /etc/shadow > /opt/kippo/honeyfs/etc/shadow
-
-# We need to add some commands to kippo to make it feel more real.
-echo " "
-echo "Adding some Extra Commands to Kippo Honeypot ...."
-cd ../txtcmds
-df > bin/df
-dmesg > bin/dmesg
-mount > bin/mount
-ulimit > bin/ulimit
-perl -v > bin/perl
-ifconfig > sbin/ifconfig
-php -v > bin/php
-php5 -v > bin/php5
-python --version > bin/python
-
 setcap 'cap_net_bind_service=+ep' /usr/bin/python2.7
 
 # PhpMyAdmin for the User access to Database
@@ -168,6 +136,38 @@ cd kippo-log2db
 wget http://handlers.sans.org/jclausing/kippo-log2db.pl
 mv /opt/kippo-log2db/kippo-log2db.pl /opt/kippo-log2db/kippo-log2db.pl.bak
 cp /opt/tds_zombie/etc/confs/kippo-log2db/kippo-log2db.pl /opt/kippo-log2db/kippo-log2db.pl
+
+# This will generate a filesystem on the honeypot from our current.
+echo " "
+echo "Adding File System to Kippo HoneyPot. May take a while ...."
+cd /opt/kippo/utils
+./createfs.py > fs.pickle
+
+# We need to populate the kippo system
+echo " "
+echo "Adding Local Files to Kippo File System ...."
+cd ../honeyfs
+cat /etc/passwd > /opt/kippo/honeyfs/etc/passwd
+echo "archives" > /opt/kippo/honeyfs/etc/hostname
+cat /opt/tds_zombie/etc/confs/kippo/honeyfs/etc/hosts > /opt/kippo/honeyfs/etc/hosts
+cat /proc/cpuinfo > /opt/kippo/honeyfs/proc/cpuinfo
+cat /proc/meminfo > /opt/kippo/honeyfs/proc/meminfo
+cat /proc/version > /opt/kippo/honeyfs/proc/version
+cat /etc/shadow > /opt/kippo/honeyfs/etc/shadow
+
+# We need to add some commands to kippo to make it feel more real.
+echo " "
+echo "Adding some Extra Commands to Kippo Honeypot ...."
+cd ../txtcmds
+df > bin/df
+dmesg > bin/dmesg
+mount > bin/mount
+ulimit > bin/ulimit
+perl -v > bin/perl
+ifconfig > sbin/ifconfig
+php -v > bin/php
+php5 -v > bin/php5
+python --version > bin/python
 
 #Set Ownership of Kippo Files
 echo " Changing File Owner to Kippo ..."
