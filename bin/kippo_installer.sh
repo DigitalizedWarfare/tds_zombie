@@ -39,7 +39,7 @@ echo " Starting Mysql Server ...."
 echo " "
 echo "Creating Kippo User Account ...."
 #adduser --disabled-login kippo
-local mysql_password
+
 read -p " Enter Your Root Password for MySql " mysql_password
 /usr/bin/expect /opt/tds_zombie/bin/system_useradd.exp kippo TheDeadSquad 
 /usr/bin/expect /opt/tds_zombie/bin/system_import_kipposql.exp kippo TheDeadSquad $mysql_password
