@@ -92,6 +92,7 @@ ulimit > bin/ulimit
 perl -v > bin/perl
 ifconfig > sbin/ifconfig
 php -v > bin/php
+php5 -v > bin/php5
 python --version > bin/python
 
 setcap 'cap_net_bind_service=+ep' /usr/bin/python2.7
