@@ -27,28 +27,34 @@ pause(){
 # ----------------------------------------------
 install_deps(){
 	clear
-	echo "We need to Update your System : "
+	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo " This software will update and install software to ready your server"
+	echo " to be a full honeypot server. Please watch for any errors and enter "
+	echo " enter any information when asked ... Good Luck..."
+	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo " "
+	echo " We need to Update your System : "
 	apt-get update&&apt-get upgrade -y&&apt-get dist-upgrade -y&&apt-get install expect tcl8.5 -y&&updatedb
-	read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
-	clear
+	echo " "
+	read -p " System Updated : Press [Enter] key to continue..." fackEnterKey
 	updatedb
-	echo "We need to change the Default SSH Port.. Yes.. You will have to log"
-	echo "again to the correct port....15022 "
-	read -p "Press [Enter] key to continue.." fackEnterKey
-	clear
+	echo " We need to change the Default SSH Port.. And restart the Service"
+
 	mkdir -p /opt/tdsz_backup/etc/confs/ssh/
 	cp /etc/ssh/sshd_config /opt/tdsz_backup/etc/confs/ssh/
 	mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 	cp /opt/tds_zombie/etc/confs/ssh/sshd_config /etc/ssh/sshd_config
-	read -p "Press [Enter] key to restart SSH services.." fackEnterKey
-	/etc/init.d/./ssh restart
 	echo " "
-	echo "We need to in Install the Panel System : "
-	read -p "Press [Enter] key to continue..." fackEnterKey
+	/etc/init.d/./ssh restart
+	
+	echo " "
+	echo " We need to in Install the Panel System : "
 	ln -s /opt/tds_zombie/bin/tdsz_portal.sh /bin/tdsz_portal
 	chmod +x /bin/tdsz_portal
 	chmod +x /opt/tds_zombie/bin/tdsz_portal.sh
 	updatedb
+	echo " "
+	read -p " Base install Completed. Press [Enter] key to continue..." fackEnterKey
 	clear
 }
 
