@@ -1,0 +1,26 @@
+#!/usr/bin/expect
+
+set timeout 30
+set user [lindex $argv 0]
+set passwrord [lindex $argv 1]
+
+spawn mysql -u $user -p
+expect "password:"
+send "$password\r";
+expect "$"
+send "CREATE DATABASE kippo;\r";
+expect "$"
+send "GRANT ALL ON kippo.* TO 'kippo'@'localhost' IDENTIFIED BY 'TheDeadSquad';\r";
+expect "$"
+send "exit\r";
+
+spawn mysql-u kippo -p
+expect "password:"
+send "TheDeadSquad\r";
+expect "$"
+send "USE kippo;\r";
+expect "$"
+send "source /opt/tds_zombie/etc/confs/kippo/sql/kippo.sql\r";
+expect "$"
+send "exit\r";
+interact

@@ -5,8 +5,20 @@ set user [lindex $argv 0]
 set passwrord [lindex $argv 1]
 
 spawn adduser $user
-expect "pssword:"
+expect "psssword:"
 send "$password\r";
 expect "Retype"
 send "$password\r";
+expect "Full"
+send "TDS Zombie Kippo Honeypot\r";
+expect "Room"
+send "\r";
+expect "Work"
+send "\r";
+expect "Home"
+send "\r";
+expect "Other"
+send "Brought to you by The Dead Squad\r";
+expect "Y/n"
+send "Y\r";
 interact
