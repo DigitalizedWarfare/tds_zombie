@@ -4,7 +4,7 @@ set timeout 30
 set user [lindex $argv 0]
 set password [lindex $argv 1]
 
-spawn mysql -u $user -p
+spawn mysql -u root -p
 expect "password:"
 send "$password\r";
 expect "$"
