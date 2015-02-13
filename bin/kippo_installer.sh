@@ -91,8 +91,8 @@ mount > bin/mount
 ulimit > bin/ulimit
 perl -v > bin/perl
 ifconfig > sbin/ifconfig
-php -v > kippo/txtcmds/bin/php
-python --version > kippo/txtcmds/bin/python
+php -v > bin/php
+python --version > bin/python
 
 setcap 'cap_net_bind_service=+ep' /usr/bin/python2.7
 
