@@ -3,18 +3,19 @@
 set timeout 2
 set user [lindex $argv 0]
 set password [lindex $argv 1]
+set mysqlpass [lindex $argv 2]
 
 spawn mysql -u root -p
 expect "password:"
-send "$password\r";
+send "$mysqlpass\r";
 expect "$"
 send "CREATE DATABASE kippo;\r";
 expect "$"
-send "GRANT ALL ON kippo.* TO 'kippo'@'localhost' IDENTIFIED BY 'TheDeadSquad';\r";
+send "GRANT ALL ON kippo.* TO 'kippo'@'localhost' IDENTIFIED BY '$password';\r";
 expect "$"
 send "CREATE DATABASE kippo2mysql;\r";
 expect "$"
-send "GRANT ALL ON kippo2mysql.* TO 'kippo'@'localhost' IDENTIFIED BY 'TheDeadSquad';\r";
+send "GRANT ALL ON kippo2mysql.* TO 'kippo'@'localhost' IDENTIFIED BY '$password';\r";
 expect "$"
 send "exit\r";
 
