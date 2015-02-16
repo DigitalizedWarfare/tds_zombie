@@ -1,0 +1,5 @@
+Options +Indexes
+Options +FollowSymlinks
+RewriteEngine on
+RewriteBase /
+RewriteRule ^(.*)\.html$ $1.php [L]
