@@ -4,7 +4,7 @@
 	DocumentRoot /opt/tds_zombie/www
 	<Directory />
 		Options FollowSymLinks
-		AllowOverride None
+		AllowOverride all
 	</Directory>
 	<Directory /opt/tds_zombie/www/>
 		Options Indexes FollowSymLinks MultiViews
@@ -21,11 +21,11 @@
 		Allow from all
 	</Directory>
 
-	ErrorLog ${APACHE_LOG_DIR}/error.log
+	ErrorLog /opt/tds_zombie/logs/apache2/error.log
 
 	# Possible values include: debug, info, notice, warn, error, crit,
 	# alert, emerg.
 	LogLevel warn
 
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
+	CustomLog /opt/tds_zombie/logs/apache2/access.log combined
 </VirtualHost>

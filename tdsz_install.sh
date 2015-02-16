@@ -28,6 +28,9 @@ pause(){
 install_deps(){
 	clear
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo " The Dead Squad Zombie HoneyPot System V.1 Alpha "
+	echo ' By Digitalized Warfare for HTTP://WWW.THEDEADSQUAD.COM'
+	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	echo " This software will update and install software to ready your server"
 	echo " to be a full honeypot server. Please watch for any errors and enter "
 	echo " enter any information when asked ... Good Luck..."

@@ -77,6 +77,10 @@ echo " "
 echo " Creating Backup Folders for Apache ..."	
 mkdir -p /opt/tdsz_backup/etc/confs/apache2/sites-available/
 mkdir -p /opt/tdsz_backup/etc/confs/apache2/sites-available/sites-enabled
+
+#enable Mod Rewrite
+a2enmod rewrite
+mkdir -p /opt/tds_zombie/logs/apache2/
 	
 # We need to Backup the configs and Ports
 #echo "Copying Files to Backup Folder ..."
