@@ -139,9 +139,7 @@ make install
 	
 #read -p "Check Install..." fackEnterKey
 cd /opt/
-wget https://github.com/benjiec/django-tables2-simplefilter/archive/master.zip -O django-tables2-simplefilter.zip
-unzip django-tables2-simplefilter.zip
-mv django-tables2-simplefilter-master/ django-tables2-simplefilter/
+git clone  https://github.com/benjiec/django-tables2-simplefilter
 cd django-tables2-simplefilter/
 python setup.py install
 	
