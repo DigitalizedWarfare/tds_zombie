@@ -1,3 +1,9 @@
+<?php
+if($_POST['loadDataFile'] == 'kippo.cfg') {
+$filename='/opt/kippo/kippo.cfg';
+$myConfig=file_get_contents($filename);
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -20,7 +26,7 @@
 					<li><a href="phoneyc_config.html">PhoneyC</a></li>
 					<li><a href="glastopf_config.html">Glastopf</a></li>
 					<li><a href="amun_config.html">Amun</a></li>
-					<li><a href="http://127.0.0.1:15080/phpmyadmin/" target="_blank" class="topNavLast">PhpMyAdmin</a></li>
+					<li><a href="phpmyadmin/" target="_blank" class="topNavLast">PhpMyAdmin</a></li>
 	  			</ul>
 	  			<br class="clear" />
    			</div>

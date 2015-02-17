@@ -20,7 +20,7 @@
 					<li><a href="phoneyc_config.html">PhoneyC</a></li>
 					<li><a href="glastopf_config.html">Glastopf</a></li>
 					<li><a href="amun_config.html">Amun</a></li>
-					<li><a href="http://127.0.0.1:15080/phpmyadmin/" target="_blank" class="topNavLast">PhpMyAdmin</a></li>
+					<li><a href="phpmyadmin/" target="_blank" class="topNavLast">PhpMyAdmin</a></li>
 	  			</ul>
 	  			<br class="clear" />
    			</div>

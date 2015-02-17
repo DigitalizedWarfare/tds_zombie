@@ -1,4 +1,4 @@
-* {
+﻿* {
 	margin:0px;
 	padding:0px;
 }
@@ -607,7 +607,7 @@ input.footerSubmit {
        text-align:left;
 }
 .builderFormR {
-	width:285px;
+	width:585px;
 	margin-right:10px;
 	float:left;
 	margin-top:20px;
@@ -625,7 +625,7 @@ input.builderInputArea {
 	background:#FFFFFF;
 	border:none;
 	padding:6px;
-	width:274px;
+	width:574px;
 	height:20px;
 	padding-top:4px;
 	font-size:18px;
@@ -638,7 +638,7 @@ textarea.buildertextarea {
 	width:574px;
 	height:233px;
 	padding-top:6px;
-	font-size:18px;
+	font-size:12px;
 	font-weight:normal;
 }
 input.builderSubmit {

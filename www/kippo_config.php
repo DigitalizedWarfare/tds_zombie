@@ -1,3 +1,43 @@
+<?php
+if($_POST['config'] == 'kippo.cfg') {
+
+	$filename='/opt/kippo/kippo.cfg';
+	$myConfig=file_get_contents($filename);
+	$confName=$_POST['config'];
+
+} elseif($_POST['config'] == 'userdb.txt') {
+
+	$filename='/opt/kippo/data/userdb.txt';
+	$myConfig=file_get_contents($filename);
+	$confName=$_POST['config'];
+
+} else {
+
+}
+
+if(isset($_POST['builderDataWindow'])) {
+
+        $a = $_POST['builderDataWindow'];
+	
+	if($_POST['confName'] == 'kippo.cfg') {
+
+	 	$myFile = '/opt/kippo/kippo.cfg';
+
+	} elseif($_POST['confName'] == 'userdb.txt') {
+
+		 $myFile = '/opt/kippo/data/userdb.txt';
+	}
+       
+        $fh = fopen($myFile, 'w') or die("can't open file");
+        fwrite($fh, $a);
+        fclose($fh);
+
+	$myConfig=file_get_contents($myFile);
+
+    } else {
+
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -20,18 +60,19 @@
 					<li><a href="phoneyc_config.html">PhoneyC</a></li>
 					<li><a href="glastopf_config.html">Glastopf</a></li>
 					<li><a href="amun_config.html">Amun</a></li>
-					<li><a href="http://127.0.0.1:15080/phpmyadmin/" target="_blank" class="topNavLast">PhpMyAdmin</a></li>
+					<li><a href="phpmyadmin/" target="_blank" class="topNavLast">PhpMyAdmin</a></li>
 	  			</ul>
 	  			<br class="clear" />
    			</div>
    			<div id="contant">
     				<div id="builder">
     					<div class="builderForm">
-						<form method="POST" action="_SELF" name="builderData" id="buildData">
+						<form method="POST" action="" name="builderData" id="buildData">
+						<input type="hidden" name="confName" id="" value="<?php echo $confName; ?>"/>
 	  					<h4>Config Building Window</h4>
 	  					<div class="builderFormR">
-	   						<p><textarea name="" class="buildertextarea" rows="2" cols="3"></textarea></p>
-       					 		<input name="" type="button" class="builderSubmit" />
+	   						<p><textarea id="builderDataWindow" name="builderDataWindow" class="buildertextarea" rows="2" cols="3"><?php echo $myConfig; ?></textarea></p>
+       					 		<input name="submit" value="" type="submit" class="builderSubmit"/>
 	  					</div>
 						</form>
 	  					<br class="clear" />
@@ -42,11 +83,12 @@
 						effect.
 						</p>
 						<br />
-						<form method="POST" action="_SELF" name="loadDataFile" id="loadDataFile">
+						<form method="POST" action="" name="loadDataFile" id="loadDataFile">
 						<select name="config">
 							<option value="kippo.cfg">&nbsp; Kippo Main Config &nbsp;</option>
+							<option value="userdb.txt">&nbsp; Kippo User Database &nbsp;</option>
 						</select>
-						<input name="" type="button" class="builderSubmit" />
+						<input name="submit" value="" type="submit" class="builderSubmit"/>
 						</form>
 					</div>
 					<br class="clear" />
