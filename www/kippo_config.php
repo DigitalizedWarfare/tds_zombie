@@ -2,12 +2,14 @@
 if($_POST['config'] == 'kippo.cfg') {
 
 	$filename='/opt/kippo/kippo.cfg';
+	chmod ($filename, "0777");
 	$myConfig=file_get_contents($filename);
 	$confName=$_POST['config'];
 
 } elseif($_POST['config'] == 'userdb.txt') {
 
 	$filename='/opt/kippo/data/userdb.txt';
+	chmod ($filename, "0777");
 	$myConfig=file_get_contents($filename);
 	$confName=$_POST['config'];
 
@@ -20,15 +22,16 @@ if(isset($_POST['builderDataWindow'])) {
         $a = $_POST['builderDataWindow'];
 	
 	if($_POST['confName'] == 'kippo.cfg') {
-
+		$confName=$_POST['confName'];
 	 	$myFile = '/opt/kippo/kippo.cfg';
 
 	} elseif($_POST['confName'] == 'userdb.txt') {
-
-		 $myFile = '/opt/kippo/data/userdb.txt';
+		$confName=$_POST['confName'];
+		$myFile = '/opt/kippo/data/userdb.txt';
 	}
-       
-        $fh = fopen($myFile, 'w') or die("can't open file");
+       	
+	chmod ($myFile, "0777");
+        $fh = fopen($myFile, 'w') or die("can't open file : " . $myFile);
         fwrite($fh, $a);
         fclose($fh);
 

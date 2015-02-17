@@ -1,13 +1,15 @@
 <?php
-if($_POST['config'] == 'kippo.cfg') {
-
-	$filename='/opt/kippo/kippo.cfg';
+if($_POST['config'] == 'amun.conf') {
+	
+	$filename='/opt/amun/conf/amun.conf';
+	chmod ($filename, "0777");
 	$myConfig=file_get_contents($filename);
 	$confName=$_POST['config'];
 
 } elseif($_POST['config'] == 'userdb.txt') {
 
 	$filename='/opt/kippo/data/userdb.txt';
+	chmod ($filename, "0777");
 	$myConfig=file_get_contents($filename);
 	$confName=$_POST['config'];
 
@@ -19,15 +21,16 @@ if(isset($_POST['builderDataWindow'])) {
 
         $a = $_POST['builderDataWindow'];
 	
-	if($_POST['confName'] == 'kippo.cfg') {
-
-	 	$myFile = '/opt/kippo/kippo.cfg';
+	if($_POST['confName'] == 'amun.conf') {
+		$confName=$_POST['confName'];
+	 	$myFile = '/opt/amun/conf/amun.conf';
 
 	} elseif($_POST['confName'] == 'userdb.txt') {
-
-		 $myFile = '/opt/kippo/data/userdb.txt';
+		$confName=$_POST['confName'];
+		$myFile = '/opt/kippo/data/userdb.txt';
 	}
-       
+
+      	chmod ($myFile, "0777");
         $fh = fopen($myFile, 'w') or die("can't open file");
         fwrite($fh, $a);
         fclose($fh);
@@ -52,14 +55,14 @@ if(isset($_POST['builderDataWindow'])) {
    				<ul class="topNav">
 	    				<li><a href="index.html">Home Page</a></li>
 					<li><a href="control_panel.html">Control Panel</a></li>
-					<li><a href="kippo_config.html" class="topNavAct">Kippo</a></li>
+					<li><a href="kippo_config.html">Kippo</a></li>
 					<li><a href="dionaea_config.html">Dionaea</a></li>
 					<li><a href="wordpot_config.html">WordPot</a></li>
 					<li><a href="conpot_config.html">ConPot</a></li>
 					<li><a href="honeyd_config.html">HoneyD</a></li>
 					<li><a href="phoneyc_config.html">PhoneyC</a></li>
 					<li><a href="glastopf_config.html">Glastopf</a></li>
-					<li><a href="amun_config.html">Amun</a></li>
+					<li><a href="amun_config.html" class="topNavAct">Amun</a></li>
 					<li><a href="phpmyadmin/" target="_blank" class="topNavLast">PhpMyAdmin</a></li>
 	  			</ul>
 	  			<br class="clear" />
@@ -85,8 +88,8 @@ if(isset($_POST['builderDataWindow'])) {
 						<br />
 						<form method="POST" action="" name="loadDataFile" id="loadDataFile">
 						<select name="config">
-							<option value="kippo.cfg">&nbsp; Kippo Main Config &nbsp;</option>
-							<option value="userdb.txt">&nbsp; Kippo User Database &nbsp;</option>
+							<option value="amun.conf">&nbsp; Amun Main Config &nbsp;</option>
+							
 						</select>
 						<input name="submit" value="" type="submit" class="builderSubmit"/>
 						</form>

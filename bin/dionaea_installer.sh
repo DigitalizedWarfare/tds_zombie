@@ -165,9 +165,9 @@ make install
 npm install -g less
 	
 cd /opt/
-wget https://github.com/RootingPuntoEs/DionaeaFR/archive/master.zip -O DionaeaFR.zip
-unzip DionaeaFR.zip
-mv DionaeaFR-master/ DionaeaFR
+git clone https://github.com/rubenespadas/DionaeaFR.git
+#unzip DionaeaFR.zip
+#mv DionaeaFR-master/ DionaeaFR
 	
 #read -p "Check Install..." fackEnterKey
 cd /opt/
