@@ -73,6 +73,23 @@ install_amun(){
 	read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
 	clear
 }
+
+install_all(){
+	clear
+	echo "We need to Update your System : "
+	install_kippo
+	install_dionaea
+	install_wordpot
+	install_conpot
+	install_glastopf
+	install_honeyd
+	install_phoneyc
+	install_amun
+	
+	read -p "Full System Installed : Press [Enter] key to continue..." fackEnterKey
+	clear
+}
+
 # ----------------------------------------------
 # These are the Menu Loaders
 # ----------------------------------------------
@@ -130,6 +147,7 @@ install_menu() {
 	echo " 6. Install PhoneyC HoneyPot"
 	echo " 7. Install Glastopf Web HoneyPot"
 	echo " 8. Install Amun Malware HoneyPot"
+	echo " 9. Install it All"
 	echo " "
 	echo " 0. To Exit to the Main Menu "
 }
@@ -184,6 +202,7 @@ install_menu_options(){
 		6) install_phoneyc ;;
 		7) install_glastopf ;;
 		8) install_amun ;;
+		9) install_all ;;
 		0) break;;
 		*) echo -e " ${RED}Error...${STD}" && sleep 2
 	esac
