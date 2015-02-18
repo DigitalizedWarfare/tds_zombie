@@ -184,14 +184,14 @@ apt-get install unzip sqlite p0f -y
 mv /opt/dionaea/etc/dionaea/dionaea.conf /opt/dionaea/etc/dionaea/dionaea.conf.bak
 cp /opt/tds_zombie/etc/confs/dionaea/dionaea.conf /opt/dionaea/etc/dionaea/dionaea.conf
 cd /opt/dionaea/bin
-p0f -i any -u root -Q /tmp/p0f.sock -q -l&
-./dionaea -D
+#p0f -i any -u root -Q /tmp/p0f.sock -q -l&
+#./dionaea -D
 
 cp /opt/tds_zombie/etc/confs/dionaeafr/settings.py /opt/DionaeaFR/DionaeaFR/settings.py
 #read -p "DionaeaFR Installed : Press [Enter] key to continue..." fackEnterKey
 cd /opt/DionaeaFR/
 mkdir -p /var/run/dionaeafr/
-python manage.py collectstatic #type yes when asked
-python manage.py migrate
-screen -a -m -d -S DioneaeFR python manage.py runserver 0.0.0.0:8000
+#python manage.py collectstatic #type yes when asked
+#python manage.py migrate
+#screen -a -m -d -S DioneaeFR python manage.py runserver 0.0.0.0:8000
 clear

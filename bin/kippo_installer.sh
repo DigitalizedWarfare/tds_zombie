@@ -182,7 +182,7 @@ chown -Rv kippo.kippo /opt/kippo
 
 # Copy Files to Backup Folder
 echo "Starting Kippo SSH HoneyPot ..."
-su kippo /opt/kippo/./start.sh
+#su kippo /opt/kippo/./start.sh
 
 # Show Closing Menu
 echo " "
