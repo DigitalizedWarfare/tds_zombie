@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PIDFILE=kippo.pid
+PIDFILE=/opt/kippo/kippo.pid
 
 cd $(dirname $0)
 

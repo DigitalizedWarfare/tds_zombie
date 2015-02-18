@@ -18,10 +18,14 @@ $glastopf_pid=file_get_contents('/opt/kippo/kippo.pid');
 $amun_pid=file_get_contents('/opt/kippo/kippo.pid');
 
 if($_GET['HoneyPot'] =='kippo' && $_GET['Action'] == 'start') {
-shell_exec('su kippo /opt/kippo/./start.sh');
+shell_exec('/opt/kippo/./start.sh');
+header('location:control_panel.html');
+exit();
 
 }elseif($_GET['HoneyPot'] =='kippo' && $_GET['Action'] == 'stop') {
 shell_exec('/opt/kippo/./stop.sh');
+header('location:control_panel.html');
+exit();
 
 }
 ?>
@@ -48,7 +52,8 @@ shell_exec('/opt/kippo/./stop.sh');
 					<li><a href="phoneyc_config.html">PhoneyC</a></li>
 					<li><a href="glastopf_config.html">Glastopf</a></li>
 					<li><a href="amun_config.html">Amun</a></li>
-					<li><a href="phpmyadmin/" target="_blank" class="topNavLast">PhpMyAdmin</a></li>
+					<li><a href="phpmyadmin/" target="_blank">PHPMyAdmin</a></li>
+					<li><a href="phpliteadmin.php" target="_blank" class="topNavLast">PHPLiteAdmin</a></li>
 	  			</ul>
 	  			<br class="clear" />
    			</div>
@@ -83,8 +88,8 @@ shell_exec('/opt/kippo/./stop.sh');
 								<tr>
 									<td><b>Kippo Honeypot</b></td>
 									<td><?php if($kippo_pid !='') { echo '<img src="images/up.png"'; } else { echo '<img src="images/error.png"'; } ?> class="displayed" /></td>
-									<td><a href=""><img src="images/up.png" class="displayed" /></a></td>
-									<td><a href=""><img src="images/error.png" class="displayed" /></a></td>
+									<td><a href="control_panel.html?HoneyPot=kippo&Action=start"><img src="images/up.png" class="displayed" /></a></td>
+									<td><a href="control_panel.html?HoneyPot=kippo&Action=stop"><img src="images/error.png" class="displayed" /></a></td>
 									<td><a href="kippo_config.html"><img src="images/file.png" class="displayed" /></a></td>
 								</tr>
 								<tr>

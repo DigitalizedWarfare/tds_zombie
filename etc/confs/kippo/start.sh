@@ -27,4 +27,6 @@ fi
 twistd --version
 
 echo "Starting kippo in the background..."
-authbind --deep twistd -y kippo.tac -l log/kippo.log --pidfile kippo.pid
+twistd -y kippo.tac -l log/kippo.log --pidfile kippo.pid
+
+chmod 777 /opt/kippo/kippo.pid
