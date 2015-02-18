@@ -194,4 +194,4 @@ mkdir -p /var/run/dionaeafr/
 #python manage.py collectstatic #type yes when asked
 #python manage.py migrate
 #screen -a -m -d -S DioneaeFR python manage.py runserver 0.0.0.0:8000
-clear
+read -p "DionaeaFR Installed : Press [Enter] key to continue..." fackEnterKey
