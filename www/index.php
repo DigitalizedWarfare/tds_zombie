@@ -24,8 +24,8 @@ $thisServerIP=$_SERVER['SERVER_ADDR'];
 					<li><a href="phoneyc_config.html">PhoneyC</a></li>
 					<li><a href="glastopf_config.html">Glastopf</a></li>
 					<li><a href="amun_config.html">Amun</a></li>
-					<li><a href="phpmyadmin/" target="_blank">phpMyAdmin</a></li>
-					<li><a href="phpliteadmin.php" target="_blank" class="topNavLast">phpLiteAdmin</a></li>
+					<li><a href="phpmyadmin/" target="_blank">PHPMyAdmin</a></li>
+					<li><a href="phpliteadmin.php" target="_blank" class="topNavLast">PHPLiteAdmin</a></li>
 	  			</ul>
 	  			<br class="clear" />
    			</div>
