@@ -1,8 +1,6 @@
 <?php
-if($_POST['loadDataFile'] == 'kippo.cfg') {
-$filename='/opt/kippo/kippo.cfg';
-$myConfig=file_get_contents($filename);
-}
+$thisServerIP=$_SERVER['SERVER_ADDR'];
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,7 +24,8 @@ $myConfig=file_get_contents($filename);
 					<li><a href="phoneyc_config.html">PhoneyC</a></li>
 					<li><a href="glastopf_config.html">Glastopf</a></li>
 					<li><a href="amun_config.html">Amun</a></li>
-					<li><a href="phpmyadmin/" target="_blank" class="topNavLast">PhpMyAdmin</a></li>
+					<li><a href="phpmyadmin/" target="_blank">phpMyAdmin</a></li>
+					<li><a href="phpliteadmin.php" target="_blank" class="topNavLast">phpLiteAdmin</a></li>
 	  			</ul>
 	  			<br class="clear" />
    			</div>
@@ -56,9 +55,10 @@ There are many variations of Honey pots. See <a href="http://en.wikipedia.org/wi
         							<li>Quick Links Menu</li>
          							<li><a href="control_panel.html">Control Panel</a></li>
 		 						<li><a href="kippo-graph/" target="_blank" >Kippo Graph</a></li>
-								<li><a href="#" target="_blank">DionaeaFR</a></li>
+								<li><a href="http://<?php echo $thisServerIP;?>:8000" target="_blank">DionaeaFR</a></li>
 		 						<li><a href="#" target="_blank">Honey Vis</a></li>
-		 						<li><a href="phpmyadmin/" target="_blank">Php MyAdmin</a></li>
+								<li><a href="phpmyadmin/" target="_blank">phpMyAdmin</a></li>
+								<li><a href="phpliteadmin.php" target="_blank">phpLiteAdmin</a></li>
         						</ul>
 	   						<img src="images/sideBarListBoxBottom.png" alt="" width="240" height="10" />
 	  					</div>

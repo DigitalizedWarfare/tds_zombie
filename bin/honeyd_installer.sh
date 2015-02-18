@@ -25,4 +25,9 @@ cd Honeyd
 ./configure
 make
 make install
+
+#Hey HoneyViz
+cd /opt
+git clone https://code.google.com/p/honeyviz/
+
 clear
