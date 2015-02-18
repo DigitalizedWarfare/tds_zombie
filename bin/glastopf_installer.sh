@@ -41,6 +41,8 @@ python setup.py install
 cd /opt
 mkdir zombiebox
 cd zombiebox
+
+# Commented Out
 #glastopf-runner
 	
 read -p "System Updated : Press [Enter] key to continue..." fackEnterKey
