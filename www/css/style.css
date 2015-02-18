@@ -567,6 +567,7 @@ input.footerSubmit {
 }
 
 
+
 #builder {
     background:#4A4A4A;
 	padding:10px;
@@ -673,4 +674,20 @@ input.builderSubmit {
 }
 #builderContainer p label a:hover{
 	color:#666666;
+}
+
+table, th, td {
+	background-color: #FFFFFF;
+	width: 100%;
+	font-weight: bold;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

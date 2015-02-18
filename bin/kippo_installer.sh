@@ -72,6 +72,9 @@ apt-get install phpmyadmin -y
 mv /etc/phpmyadmin/config-db.php /etc/phpmyadmin/config-db.php.bak
 cp /opt/tds_zombie/etc/confs/phpmyadmin/config-db.php /etc/phpmyadmin/config-db.php
 
+#Need for phpliteadmin
+apt-get install php5-sqlite -y
+
 # We need to create back configs folders
 echo " "
 echo " Creating Backup Folders for Apache ..."	

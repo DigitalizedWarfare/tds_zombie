@@ -1,9 +1,37 @@
+<?php
+
+#Kippo 
+$kippo_pid=file_get_contents('/opt/kippo/kippo.pid');
+#dionaea
+$dionaea_pid=file_get_contents('/run/dionaeafr/dionaeafr.pid');
+#WordPot 
+$wordpot_pid=file_get_contents('/opt/kippo/kippo.pid');
+#ConPot 
+$conpot_pid=file_get_contents('/opt/kippo/kippo.pid');
+#HoneyD 
+$honeyd_pid=file_get_contents('/opt/kippo/kippo.pid');
+#PhoneyC 
+$phoneyc_pid=file_get_contents('/opt/kippo/kippo.pid');
+#Glastopf
+$glastopf_pid=file_get_contents('/opt/kippo/kippo.pid');
+#Amun 
+$amun_pid=file_get_contents('/opt/kippo/kippo.pid');
+
+if($_GET['HoneyPot'] =='kippo' && $_GET['Action'] == 'start') {
+shell_exec('su kippo /opt/kippo/./start.sh');
+
+}elseif($_GET['HoneyPot'] =='kippo' && $_GET['Action'] == 'stop') {
+shell_exec('/opt/kippo/./stop.sh');
+
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>The Dead Squad Honeypot System</title>
 		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		
 	</head>
 	<body>
 		<div id="wrapper">
@@ -25,24 +53,95 @@
 	  			<br class="clear" />
    			</div>
    			<div id="contant">
-    			<div id="footer">
-    				<div class="footerForm">
-	  				<h3>Lorem Ipsum passages</h3>
-	   				<h4>more recently with desktop publishing</h4>
-	  				<div class="footerFormR">
-	   					<p><label>Name*:</label><input name="Name" type="text" class="footerInputArea" /></p>
-	   					<p><label>Email*:</label><input name="Email" type="text" class="footerInputArea" /></p>
-	  					<p><label>Phone Number:</label><input name="Number" type="text" class="footerInputArea" /></p>
+				<div id="builder">
+    					<div class="builderForm">
+						<p>Welcome to the Kippo SSH Honeypot confitg builder. Here are a few things that you want to edit
+						Some Honeypots have more then one config. You will need to restart the service for your changes to take
+						effect.
+						</p>
+	  					<br class="clear" />
 	  				</div>
-	  				<div class="footerFormR">
-	   					<p><label>Message:</label> <textarea name="" class="footertextarea" rows="2" cols="3"></textarea></p>
-       					 	<input name="" type="button" class="footerSubmit" />
-	  				</div>
-	  				<br class="clear" />
-	  			</div>
-				<p>All the Lorem Ipsum generators on the<br /> Internet tend to repeat predefined chunks as<br /> necessary, making this the first true generator<br /> on the Internet. It uses a dictionary of over<br /> 200 Latin words, combined with a handful of<br /> model sentence structures, to generate Lorem<br /> Ipsum which looks reasonable. The generated<br /> Lorem Ipsum is therefore always free from<br /> repetition, injected humour, or<br /> non-characteristic words etc.</p>
-				<br class="clear" />
-   			</div>
+					<div class="builderFormMenu">
+					<font color="#4a4a4a" style="font-size: 12px;">			 	
+						<table>
+							<thead>
+								<tr>
+									<th>HoneyPot Name</th>
+									<th>Status</th>
+									<th>Start</th>
+									<th>Stop</th>
+									<th>Configure</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<td colspan="5">Services May have to be restarted after edit.</td>
+									
+								</tr>
+							</tfoot>
+							<tbody>
+								<tr>
+									<td><b>Kippo Honeypot</b></td>
+									<td><?php if($kippo_pid !='') { echo '<img src="images/up.png"'; } else { echo '<img src="images/error.png"'; } ?> class="displayed" /></td>
+									<td><a href=""><img src="images/up.png" class="displayed" /></a></td>
+									<td><a href=""><img src="images/error.png" class="displayed" /></a></td>
+									<td><a href="kippo_config.html"><img src="images/file.png" class="displayed" /></a></td>
+								</tr>
+								<tr>
+									<td>Dionaea Honeypot</td>
+									<td><?php if($dionaea_pid !='') { echo '<img src="images/up.png"'; } else { echo '<img src="images/error.png"'; } ?> class="displayed" /></td>
+									<td><a href=""><img src="images/up.png" class="displayed" /></a></td>
+									<td><a href=""><img src="images/error.png" class="displayed" /></a></td>
+									<td><a href="dionaea_config.html"><img src="images/file.png" class="displayed" /></a></td>
+								</tr>
+								<tr>
+									<td>Wordpot Honeypot</td>
+									<td><?php if($wordpot_pid !='') { echo '<img src="images/up.png"'; } else { echo '<img src="images/error.png"'; } ?> class="displayed" /></td>
+									<td><a href=""><img src="images/up.png" class="displayed" /></a></td>
+									<td><a href=""><img src="images/error.png" class="displayed" /></a></td>
+									<td><a href="wordpot_config.html"><img src="images/file.png" class="displayed" /></a></td>
+								</tr>
+								<tr>
+									<td>Conpot Honeypot</td>
+									<td><?php if($conpot_pid !='') { echo '<img src="images/up.png"'; } else { echo '<img src="images/error.png"'; } ?> class="displayed" /></td>
+									<td><a href=""><img src="images/up.png" class="displayed" /></a></td>
+									<td><a href=""><img src="images/error.png" class="displayed" /></a></td>
+									<td><a href="conpot_config.html"><img src="images/file.png" class="displayed" /></a></td>
+								</tr>
+								<tr>
+									<td>HoneyD Honeypot</td>
+									<td><?php if($honeyd_pid !='') { echo '<img src="images/up.png"'; } else { echo '<img src="images/error.png"'; } ?> class="displayed" /></td>
+									<td><a href=""><img src="images/up.png" class="displayed" /></a></td>
+									<td><a href=""><img src="images/error.png" class="displayed" /></a></td>
+									<td><a href="honeyd_config.html"><img src="images/file.png" class="displayed" /></a></td>
+								</tr>
+								<tr>
+									<td>PhoneyC</td>
+									<td><?php if($phoneyc_pid !='') { echo '<img src="images/up.png"'; } else { echo '<img src="images/error.png"'; } ?> class="displayed" /></td>
+									<td><a href=""><img src="images/up.png" class="displayed" /></a></td>
+									<td><a href=""><img src="images/error.png" class="displayed" /></a></td>
+									<td><a href="phoneyc_config.html"><img src="images/file.png" class="displayed" /></a></td>
+								</tr>
+								<tr>
+									<td>Glastopf Honeypot</td>
+									<td><?php if($glastopf_pid !='') { echo '<img src="images/up.png"'; } else { echo '<img src="images/error.png"'; } ?> class="displayed" /></td>
+									<td><a href=""><img src="images/up.png" class="displayed" /></a></td>
+									<td><a href=""><img src="images/error.png" class="displayed" /></a></td>
+									<td><a href="glastopf_config.html"><img src="images/file.png" class="displayed" /></a></td>
+								</tr>
+								<tr>
+									<td>Amun Honeypot</td>
+									<td><?php if($amun_pid !='') { echo '<img src="images/up.png"'; } else { echo '<img src="images/error.png"'; } ?> class="displayed" /></td>
+									<td><a href=""><img src="images/up.png" class="displayed" /></a></td>
+									<td><a href=""><img src="images/error.png" class="displayed" /></a></td>
+									<td><a href="amun_config.html"><img src="images/file.png" class="displayed" /></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</font>
+					</div>
+					<br class="clear" />
+   				</div>   			
 	  		</div>
     			<br class="clear" />
   		   	
