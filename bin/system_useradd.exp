@@ -10,7 +10,7 @@ send "$password\r";
 expect "Retype"
 send "$password\r";
 expect "Full"
-send "TDS Zombie Kippo Honeypot\r";
+send "TDS Zombie\r";
 expect "Room"
 send "\r";
 expect "Work"
